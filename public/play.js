@@ -722,6 +722,27 @@ async function changeElement(element, delta) {
   }
 }
 
+async function resetElements() {
+  if (!selectedPlayer) return;
+  try {
+    await runTransaction(db, async tx => {
+      const s = await tx.get(gameRef);
+      if (!s.exists()) throw Error("Game does not exist.");
+      const g = s.data();
+      if (g.game_status !== "active") throw Error("Game is not active.");
+      
+      const players = structuredClone(g.players);
+      const p = players[String(selectedPlayer)];
+      if (!p) throw Error("Player not found.");
+      
+      p.elements = emptyElements(); // Zresetowanie wszystkich żywiołów do 0
+      tx.update(gameRef, { players });
+    });
+  } catch (e) {
+    error(e.message);
+  }
+}
+
 /* Event listenery */
 $("languageToggle").addEventListener("click", () => {
   lang = lang === "pl" ? "en" : "pl";
@@ -765,6 +786,11 @@ $("fearControls").addEventListener("click", e => {
   const b = e.target.closest("[data-fear]");
   if (b) changeFear(Number(b.dataset.fear));
 });
+
+const resetElementsBtn = $("resetElementsButton"); // Upewnij się, że ID w HTML odpowiada temu w JS
+if (resetElementsBtn) {
+  resetElementsBtn.addEventListener("click", resetElements);
+}
 
 async function boot() {
   applyTranslations();
