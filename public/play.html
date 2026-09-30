@@ -8,8 +8,11 @@
 </head>
 <body>
   <header class="topbar">
-      <span id="connectionBadge" class="badge">Łączenie…</span>
+    <div>
+      <p class="eyebrow">SPIRIT ISLAND HELPER</p>
+    </div>
     <div class="topbar-actions">
+      <span id="connectionBadge" class="badge">Łączenie…</span>
       <button id="languageToggle" class="button button-ghost" type="button">EN</button>
     </div>
   </header>
@@ -38,13 +41,14 @@
       <div id="messageBox" class="alert alert-error hidden"></div>
       <div class="game-header card">
         <div>
+          <p class="eyebrow" id="playerIdentity">PLAYER</p>
           <h2 id="spiritName">—</h2>
+          <p id="adversarySummary" class="muted">—</p>
         </div>
         <div class="game-status">
           <span id="gameStatus" class="status-pill">SETUP</span>
           <strong id="phaseName">—</strong>
           <small id="turnLabel">—</small>
-          <small id="phaseInfo">—</small>
         </div>
       </div>
 
