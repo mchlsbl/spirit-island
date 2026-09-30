@@ -516,8 +516,8 @@ function renderPlayersStatus(g) {
       <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border);">
         <div>
           <!-- Zastosowanie bardzo grubego fontu (900) dla aktualnego gracza -->
-          <div style="${isMe ? "font-weight: 90; color: var(--primary, #ffffff);" : "font-weight: 50;"}">
-            ${mainTitle} ${isMe ? ` <small style=" opacity: 0.8;">(${lang === "pl" ? "Ty" : "You"})</small>` : ""}
+          <div style="${isMe ? "font-weight: 900; color: var(--primary, #000000);" : "font-weight: 500;"}">
+            ${mainTitle} ${isMe ? ` <small style=" opacity: 0.5;">(${lang === "pl" ? "Ty" : "You"})</small>` : ""}
           </div>
         </div>
         <span class="ready-badge ${isReady ? "ready-yes" : "ready-no"}">
