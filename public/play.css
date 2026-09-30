@@ -416,7 +416,6 @@ h3 {
   font-weight: 900;
   font-size: 13px;
   color: #141414;
-  mix-blend-mode: difference;
 }
 
 .fear-summary strong {
@@ -431,7 +430,7 @@ h3 {
 
 .fear-controls {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
 
