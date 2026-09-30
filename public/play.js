@@ -184,6 +184,20 @@ const PHASE_STEPS = {
   slow:{pl:["Wolne Moce z kart","Wolne Zdolności Wrodzone"],en:["Slow Power Cards","Slow Innate Powers"]},
   time_passes:{pl:["Odrzuć zagrane karty Mocy","Odnów zużyte karty","Przesuń się do następnej tury"],en:["Discard played Power Cards","Recover spent cards","Move to the next turn"]}
 };
+
+const ADVERSARIES = [
+{ id: null, pl: "Brak", en: "None", cardText: "" },
+{ id: "brandenburg_prussia", pl: "Brandenburgia-Prusy", en: "Brandenburg-Prussia" },
+{ id: "england", pl: "Anglia", en: "England" },
+{ id: "sweden", pl: "Szwecja", en: "Sweden" },
+{ id: "france", pl: "Francja", en: "France (Plantation Colony)" },
+{ id: "habsburg_monarchy", pl: "Monarchia Habsburgów", en: "Habsburg Monarchy (Livestock Colony)" },
+{ id: "russia", pl: "Rosja", en: "Russia" },
+{ id: "scotland", pl: "Szkocja", en: "Scotland" },
+{ id: "habsburg_mining_expedition", pl: "Habsburska Ekspedycja Górnicza", en: "Habsburg Mining Expedition" }
+];
+
+
 const I18N={
   pl:{"play.choosePlayer":"Wybierz gracza","play.choosePlayerHint":"Numer gracza jest używany tylko w tej karcie przeglądarki i znika po odświeżeniu.",
       "play.chooseSpirit":"Wybierz ducha","play.chooseSpiritHint":"Wybór ducha zostanie zapisany w bieżącej grze, ale nie lokalnie.","play.changePlayer":"Zmień gracza",
@@ -222,7 +236,17 @@ const t=k=>I18N[lang]?.[k]??I18N.pl[k]??k;
 
 function setConnection(text,ok=true){$("connectionBadge").textContent=text;$("connectionBadge").className=`badge${ok?"":" alert-error"}`;}
 function error(message){const el=$("messageBox");el.textContent=message;el.classList.remove("hidden");setTimeout(()=>el.classList.add("hidden"),5000);}
-function formatAdversary(g){const id=g.adversary?.id;if(!id)return lang==="pl"?"Brak":"None";return id==="prussia"?(lang==="pl"?"Królestwo Prus":"Kingdom of Prussia")+` · ${g.adversary.level}`:id;}
+
+function formatAdversary(g) {
+  const id = g.adversary?.id;
+  if (!id) {return lang === "pl" ? "Brak" : "None";}
+  const adversary = ADVERSARIES.find((a) => a.id === id);
+  if (!adversary) {return id;}
+  const name = adversary[lang];
+  return g.adversary?.level
+    ? `${name} · ${g.adversary.level}`
+    : name;}
+
 function phaseName(id){return t(`phase.${id}`);}
 function applyTranslations(){document.documentElement.lang=lang;document.querySelectorAll("[data-i18n]").forEach(el=>el.textContent=t(el.dataset.i18n));$("languageToggle").textContent=lang==="pl"?"EN":"PL";if(currentGame)render(currentGame);}
 function showPlayerPicker(){ $("playerPicker").classList.remove("hidden");$("spiritPicker").classList.add("hidden");$("gameView").classList.add("hidden"); }
