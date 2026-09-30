@@ -406,8 +406,8 @@ function renderSpiritPicker(g) {
     const isSelected = s.id === selected;
     const name = lang === "pl" ? s.pl : s.en;
     return `
-      <button class="spirit-button ${isSelected ? "selected" : ""}" data-spirit="${s.id}" type="button">
-        ${s.img ? `<img src="${s.img}" alt="${s.pl}" class="spirit-img" onerror="this.style.display='none'">` : ""}
+     <button class="spirit-button ${isSelected ? "selected" : ""}" data-spirit="${s.id}" type="button">
+        ${s.image ? `<img src="${s.image}" alt="${name}" class="spirit-img" onerror="this.style.display='none'">` : ""}
         <div class="spirit-names">
           <strong>${name}</strong>
         </div>
