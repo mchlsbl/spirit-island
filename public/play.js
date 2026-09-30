@@ -17,25 +17,25 @@ const PHASES = ["spirit", "fast", "invader", "slow", "time_passes"];
 const ELEMENTS = ["sun", "moon", "fire", "air", "water", "earth", "plant", "animal"];
 
 const SPIRITS = [
-  { id: "river_surges_in_sunlight", pl: "Rzeka Sunie w Blasku Słońca", en: "River Surges in Sunlight", img: "./assets/spirits/river.png" },
-  { id: "lightnings_swift_strike", pl: "Szybki Grom", en: "Lightning's Swift Strike", img: "./assets/spirits/lightning.png" },
-  { id: "bringer_of_dreams_and_nightmares", pl: "Siewca Snów i Koszmarów", en: "Bringer of Dreams and Nightmares", img: "./assets/spirits/bringer.png" },
-  { id: "vital_strength_of_the_earth", pl: "Żywotna Siła Ziemi", en: "Vital Strength of the Earth", img: "./assets/spirits/earth.png" },
-  { id: "thunderspeaker", pl: "Głosiciel Gromu", en: "Thunderspeaker", img: "./assets/spirits/thunderspeaker.png" },
-  { id: "shadows_flicker_like_flame", pl: "Cienie Migoczące jak Płomień", en: "Shadows Flicker Like Flame", img: "./assets/spirits/shadows.png" },
-  { id: "ocean_hungry_grasp", pl: "Ocean Głodnego Uścisku", en: "Ocean's Hungry Grasp", img: "./assets/spirits/ocean.png" },
-  { id: "a_spreading_heart_of_green", pl: "Rozrastające się Zielone Serce", en: "A Spread of Rampant Green", img: "./assets/spirits/green.png" }
+  { id: "river_surges_in_sunlight", pl: "Rzeka Sunie w Blasku Słońca", en: "River Surges in Sunlight", img: "./images/spirits/river.png" },
+  { id: "lightnings_swift_strike", pl: "Szybki Grom", en: "Lightning's Swift Strike", img: "./images/spirits/lightning.png" },
+  { id: "bringer_of_dreams_and_nightmares", pl: "Siewca Snów i Koszmarów", en: "Bringer of Dreams and Nightmares", img: "./images/spirits/bringer.png" },
+  { id: "vital_strength_of_the_earth", pl: "Żywotna Siła Ziemi", en: "Vital Strength of the Earth", img: "./images/spirits/earth.png" },
+  { id: "thunderspeaker", pl: "Głosiciel Gromu", en: "Thunderspeaker", img: "./images/spirits/thunderspeaker.png" },
+  { id: "shadows_flicker_like_flame", pl: "Cienie Migoczące jak Płomień", en: "Shadows Flicker Like Flame", img: "./images/spirits/shadows.png" },
+  { id: "ocean_hungry_grasp", pl: "Ocean Głodnego Uścisku", en: "Ocean's Hungry Grasp", img: "./images/spirits/ocean.png" },
+  { id: "a_spreading_heart_of_green", pl: "Rozrastające się Zielone Serce", en: "A Spread of Rampant Green", img: "./images/spirits/green.png" }
 ];
 
 const ELEMENT_ICONS = {
-  sun: "./assets/elements/sun.svg",
-  moon: "./assets/elements/moon.svg",
-  fire: "./assets/elements/fire.svg",
-  air: "./assets/elements/air.svg",
-  water: "./assets/elements/water.svg",
-  earth: "./assets/elements/earth.svg",
-  plant: "./assets/elements/plant.svg",
-  animal: "./assets/elements/animal.svg"
+  sun: "./images/elements/sun.png",
+  moon: "./images/elements/moon.png",
+  fire: "./images/elements/fire.png",
+  air: "./images/elements/air.png",
+  water: "./images/elements/water.png",
+  earth: "./images/elements/earth.png",
+  plant: "./images/elements/plant.png",
+  animal: "./images/elements/animal.png"
 };
 
 const PHASE_STEPS = {
