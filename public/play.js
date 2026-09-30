@@ -295,7 +295,9 @@ const I18N = {
     "status.finished": "FINISHED",
     "message.error": "Wystąpił błąd.",
     "play.elements.reset":"RESETUJ ŻYWIOŁY",
-    "play.player.statuses":"STATUS GRACZY"
+    "play.player.statuses":"STATUS GRACZY",
+    "play.fear":"STRACH",
+    "play.adversary":"PRZECIWNIK"
   },
   en: {
     "play.choosePlayer": "Choose player",
@@ -317,7 +319,9 @@ const I18N = {
     "status.finished": "FINISHED",
     "message.error": "Something went wrong.",
     "play.elements.reset":"RESET ELEMENTS",
-    "play.player.statuses":"PLAYERS STATUS"
+    "play.player.statuses":"PLAYERS STATUS",
+    "play.fear":"FEAR",
+    "play.adversary":"ADVERSARY"
   }
 };
 
