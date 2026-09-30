@@ -470,9 +470,9 @@ function renderFear(g) {
     fearControls.innerHTML = "";
   } else {
     fearControls.classList.remove("hidden");
-    fearControls.innerHTML = [-1, 1, 3, 5].map(n => `
+    fearControls.innerHTML = [-1, +1, +3, +5].map(n => `
       <button class="fear-button" data-fear="${n}" type="button" ${g.game_status === "active" ? "" : "disabled"}>
-        +${n}
+        ${n}
       </button>
     `).join("");
   }
