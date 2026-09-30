@@ -16,19 +16,97 @@ export const gameRef = doc(db, "games", "current");
 export const PHASES = ["spirit", "fast", "invader", "slow", "time_passes"];
 
 const SPIRITS = [
-  { id: "river_surges_in_sunlight", pl: "Rzeka Sunie w Blasku Słońca", en: "River Surges in Sunlight" },
-  { id: "lightnings_swift_strike", pl: "Szybki Grom", en: "Lightning's Swift Strike" },
-  { id: "bringer_of_dreams_and_nightmares", pl: "Siewca Snów i Koszmarów", en: "Bringer of Dreams and Nightmares" },
-  { id: "vital_strength_of_the_earth", pl: "Żywotna Siła Ziemi", en: "Vital Strength of the Earth" },
-  { id: "thunderspeaker", pl: "Głosiciel Gromu", en: "Thunderspeaker" },
-  { id: "shadows_flicker_like_flame", pl: "Cienie Migoczące jak Płomień", en: "Shadows Flicker Like Flame" },
-  { id: "ocean_hungry_grasp", pl: "Ocean Głodnego Uścisku", en: "Ocean's Hungry Grasp" },
-  { id: "a_spreading_heart_of_green", pl: "Rozrastające się Zielone Serce", en: "A Spread of Rampant Green" }
+  // Core Set
+  { id: "river_surges_in_sunlight", pl: "Skąpana Słońcem Rzeka", en: "River Surges in Sunlight" },
+  { id: "lightnings_swift_strike", pl: "Błyskawica z Serca Burzy", en: "Lightning's Swift Strike" },
+  { id: "shadows_flicker_like_flame", pl: "Cień Migoczący Niczym Płomień", en: "Shadows Flicker Like Flame" },
+  { id: "vital_strength_of_the_earth", pl: "Kolosalna Siła Ziemi", en: "Vital Strength of the Earth" },
+  { id: "ocean_hungry_grasp", pl: "Zryw Wygłodnialego Oceanu", en: "Ocean's Hungry Grasp" },
+  { id: "a_spread_of_rampant_green", pl: "Nieokiełznany Siewca Zieleni", en: "A Spread of Rampant Green" },
+  { id: "thunderspeaker", pl: "Głos Burzy", en: "Thunderspeaker" },
+  { id: "bringer_of_dreams_and_nightmares", pl: "Zsyłający Sny i Koszmary", en: "Bringer of Dreams and Nightmares" },
+  
+  // Branch & Claw
+  { id: "sharp_fangs_behind_the_leaves", pl: "Ostre Kły Ukryte w Liściach", en: "Sharp Fangs Behind the Leaves" },
+  { id: "keeper_of_the_forbidden_wilds", pl: "Strażnik Zakazanej Głuszy", en: "Keeper of the Forbidden Wilds" },
+  
+  // Jagged Earth
+  { id: "stone_unyielding_defiance", pl: "Niewzruszony Opór Skały", en: "Stone's Unyielding Defiance" },
+  { id: "shifting_memory_of_ages", pl: "Zmienna Pamięć Wieków", en: "Shifting Memory of Ages" },
+  { id: "grinning_trickster_stirs_up_trouble", pl: "Uśmiechnięty Psotnik Mąci Wodę", en: "Grinning Trickster Stirs Up Trouble" },
+  { id: "locus_serpent", pl: "Wąż Drzemiący pod Ziemią", en: "Serpent Slumbering Beneath the Island" },
+  { id: "lure_of_the_deep_wilderness", pl: "Zew Głębokiej Głuszy", en: "Lure of the Deep Wilderness" },
+  { id: "many_minds_move_as_one", pl: "Mrowie Myśli Mówi Jednym Głosem", en: "Many Minds Move as One" },
+  { id: "volcano_looming_high", pl: "Wulkan Majaczący w Oddali", en: "Volcano Looming High" },
+  { id: "shroud_of_silent_mist", pl: "Całun Milczącej Mgły", en: "Shroud of Silent Mist" },
+  { id: "vengeance_as_a_burning_plague", pl: "Zemsta niczym Płonąca Zaraza", en: "Vengeance as a Burning Plague" },
+  { id: "starlight_seeks_its_form", pl: "Światło Gwiazd Szukające Kształtu", en: "Starlight Seeks Its Form" },
+  
+  // Promo / Feather & Flame
+  { id: "heart_of_the_wildfire", pl: "Serce Dzikiego Ognia", en: "Heart of the Wildfire" },
+  { id: "finder_of_paths_unseen", pl: "Odkrywca Nieprzetartych Ścieżek", en: "Finder of Paths Unseen" },
+
+  // Horizons of Spirit Island
+  { id: "devouring_teeth_lurk_underfoot", pl: "Pożerające Zęby pod Stopami", en: "Devouring Teeth Lurk Underfoot" },
+  { id: "eyes_watch_from_the_trees", pl: "Oczy Patrzące z Drzew", en: "Eyes Watch From the Trees" },
+  { id: "fathomless_mud_of_the_swamp", pl: "Bezdenne Błoto Moczarów", en: "Fathomless Mud of the Swamp" },
+  { id: "rising_heat_of_stone_and_sand", pl: "Narastający Żar Kamienia i Piasku", en: "Rising Heat of Stone and Sand" },
+  { id: "sun_bright_whirlwind", pl: "Słoneczny Wir", en: "Sun-Bright Whirlwind" },
+
+  // Nature Incarnate
+  { id: "ember_eager_roots", pl: "Korzenie Żądne Żaru", en: "Ember-Eager Roots" },
+  { id: "hearth_vigil", pl: "Czuwanie przy Ognisku", en: "Hearth-Vigil" },
+  { id: "relentless_gaze_of_the_sun", pl: "Nieubłagane Spojrzenie Słońca", en: "Relentless Gaze of the Sun" },
+  { id: "towering_roots_of_the_jungle", pl: "Czołowe Korzenie Dżungli", en: "Towering Roots of the Jungle" },
+  { id: "breath_of_darkness_down_your_neck", pl: "Oddech Ciemności na Szyi", en: "Breath of Darkness Down Your Neck" },
+  { id: "dances_up_earthquakes", pl: "Taniec Wywołujący Trzęsienia Ziemi", en: "Dances Up Earthquakes" },
+  { id: "wandering_voice_keens_delirium", pl: "Wędrowny Głos Zawodzi w Majakach", en: "Wandering Voice Keens Delirium" },
+  { id: "wounded_waters_bleeding", pl: "Ranne Wody Krwawiące", en: "Wounded Waters Bleeding" }
 ];
 
 const ADVERSARIES = [
   { id: null, pl: "Brak", en: "None", cardText: "" },
-  { id: "prussia", pl: "Królestwo Prus", en: "Kingdom of Prussia", cardText: "Stage II Invader cards are skipped during setup."
+  { 
+    id: "prussia", 
+    pl: "Królestwo Prus", 
+    en: "Kingdom of Prussia", 
+    cardText: "Modyfikuje talię Najeźdźców poprzez usunięcie wybranych kart II ery (szybszy upływ czasu)." 
+  },
+  { 
+    id: "britain", 
+    pl: "Królestwo Wielkiej Brytanii", 
+    en: "Kingdom of Great Britain", 
+    cardText: "Zwiększa populację Osadników i Budynków (budowanie rezerwowych budynków)." 
+  },
+  { 
+    id: "sweden", 
+    pl: "Królestwo Szwecji", 
+    en: "Kingdom of Sweden", 
+    cardText: "Zwiększone obrażenia podczas Sądzenia (Siekające ciosy) i szybsza zamiana w Zarazę." 
+  },
+  { 
+    id: "france", 
+    pl: "Królestwo Francji", 
+    en: "Kingdom of France", 
+    cardText: "Skupia się na Karczowaniu i Farmach (limity Osadników na planszy)." 
+  },
+  { 
+    id: "habsburg", 
+    pl: "Monarchia Habsburgów", 
+    en: "Habsburg Monarchy", 
+    cardText: "Koncentruje się na hodowli bydła i trwałej budowie miast (trudniejsze do zniszczenia)." 
+  },
+  { 
+    id: "russia", 
+    pl: "Carstwo Rosyjskie", 
+    en: "Tsardom of Russia", 
+    cardText: "Agresywni Łowcy (Osadnicy zadają więcej obrażeń i nie giną tak łatwo)." 
+  },
+  { 
+    id: "habsburg_mining", 
+    pl: "Monarchia Habsburgów (Górnictwo)", 
+    en: "Habsburg Mining Expedition", 
+    cardText: "Agresywne wydobycie i szybsze zatruwanie wyspy zarazą." 
   }
 ];
 
@@ -65,8 +143,6 @@ const I18N = {
 
 let lang = localStorage.getItem("sic_language") || "pl";
 let currentGame = null;
-let unsubscribe = null;
-let confirmResolve = null;
 
 const $ = (id) => document.getElementById(id);
 const emptyElements = () => ({sun:0,moon:0,fire:0,air:0,water:0,earth:0,plant:0,animal:0});
@@ -83,7 +159,7 @@ export function createInitialGame(playerCount=1) {
   return {
     game_status:"setup", turn:1, phase_index:0, phase_start_time:null,
     player_count:playerCount, players, elements_tracker_enabled:true,
-    adversary:{id:null,level:null,card_text:null},
+    adversary:{id:null,level:0,card_text:null},
     fear:{total_generated:0,per_card:playerCount*4,log:[]}, phase_history:[],
     timing:{setup_started_at:Date.now(),game_started_at:null,game_finished_at:null}
   };
@@ -119,8 +195,9 @@ async function saveSetupConfig() {
     };
     players[String(i)] = p;
   }
-  const adversary = ADVERSARIES.find(a=>a.id===($("adversarySelect").value||null)) || ADVERSARIES[0];
-  const level = adversary.id ? Number($("adversaryLevel").value) : null;
+  const advId = $("adversarySelect").value || null;
+  const adversary = ADVERSARIES.find(a=>a.id===advId) || ADVERSARIES[0];
+  const level = adversary.id ? Number($("adversaryLevel").value) : 0;
   await updateDoc(gameRef, {
     players,
     elements_tracker_enabled: $("elementsTracker").checked,
@@ -196,7 +273,10 @@ function renderStatus(g){
   $("advancePhaseButton").disabled=g.game_status!=="active";
   $("finishGameButton").disabled=g.game_status!=="active";
   const editable=g.game_status==="setup";
-  $("playerCount").disabled=!editable; $("elementsTracker").disabled=!editable; $("adversarySelect").disabled=!editable; $("adversaryLevel").disabled=!editable || !g.adversary?.id;
+  $("playerCount").disabled=!editable; 
+  $("elementsTracker").disabled=!editable; 
+  $("adversarySelect").disabled=!editable; 
+  $("adversaryLevel").disabled=!editable || !g.adversary?.id;
   $("phaseTitle").textContent = g.game_status==="setup" ? "Konfiguracja gry" : phaseName(PHASES[g.phase_index]);
   $("phaseSubtitle").textContent = t(g.game_status==="setup"?"setup.ready":g.game_status==="active"?"setup.active":"setup.finished");
 }
@@ -214,10 +294,13 @@ function renderPlayers(g){
 function renderAdversary(g){
   $("adversarySelect").innerHTML=ADVERSARIES.map(a=>`<option value="${a.id??""}">${a[lang]}</option>`).join("");
   $("adversarySelect").value=g.adversary?.id??"";
-  $("adversaryLevel").innerHTML=Array.from({length:6},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join("");
-  $("adversaryLevel").value=String(g.adversary?.level??1);
+  
+  // Poziomy 0 do 6
+  $("adversaryLevel").innerHTML=Array.from({length:7},(_,i)=>`<option value="${i}">${i}</option>`).join("");
+  $("adversaryLevel").value=String(g.adversary?.level??0);
+  
   const a=ADVERSARIES.find(x=>x.id===g.adversary?.id)||ADVERSARIES[0];
-  $("adversaryPreview").textContent=a.id ? `${a[lang]} · ${lang==="pl"?"Poziom":"Level"} ${g.adversary?.level??1}${a.cardText?` — ${a.cardText}`:""}` : t("setup.adversary.noDescription");
+  $("adversaryPreview").textContent=a.id ? `${a[lang]} · ${lang==="pl"?"Poziom":"Level"} ${g.adversary?.level??0}${a.cardText?` — ${a.cardText}`:""}` : t("setup.adversary.noDescription");
 }
 
 function renderFear(g){
@@ -239,43 +322,100 @@ function renderStats(g){
 
 function renderHistory(g){
   const history=g.phase_history||[];
-  if(!history.length){ $("phaseHistory").innerHTML=`<div class="muted tiny">${t("history.empty")}</div>`; return; }
-  $("phaseHistory").innerHTML=[...history].reverse().map(h=>`<div class="history-item"><div><strong>${t("history.turn")} ${h.turn}</strong><small>${phaseName(h.phase)}</small></div><div><small>${formatDate(h.recorded_at)}${h.ended_with_game?` · ${t("history.finished")}`:""}</small></div><div class="history-duration">${formatSeconds(h.duration_seconds)}</div></div>`).join("");
+  if(!history.length){ 
+    $("phaseHistory").innerHTML=`<p class="muted tiny">${t("history.empty")}</p>`;
+    return;
+  }
+  $("phaseHistory").innerHTML = history.slice().reverse().map(item => `
+    <div class="history-item">
+      <div><strong>${t("history.turn")} ${item.turn}</strong></div>
+      <div>${phaseName(item.phase)} <small>(${formatDate(item.recorded_at)})</small></div>
+      <div class="history-duration">${formatSeconds(item.duration_seconds)}</div>
+    </div>
+  `).join("");
 }
 
 function render(g){
-  renderStatus(g); renderPlayers(g); renderAdversary(g); renderFear(g); renderStats(g); renderHistory(g); $("elementsTracker").checked=!!g.elements_tracker_enabled;
+  currentGame = g;
+  renderStatus(g);
+  renderPlayers(g);
+  renderAdversary(g);
+  renderFear(g);
+  renderStats(g);
+  renderHistory(g);
+  $("elementsTracker").checked = !!g.elements_tracker_enabled;
 }
 
-function flash(id,key){ const el=$(id); el.textContent=t(key); el.classList.remove("hidden"); setTimeout(()=>el.classList.add("hidden"),2600); }
-function error(message){ const el=$("errorBox"); el.textContent=message; el.classList.remove("hidden"); setTimeout(()=>el.classList.add("hidden"),5000); }
-
-function confirmAction(title,text){
-  $("confirmTitle").textContent=title; $("confirmText").textContent=text; $("confirmDialog").showModal();
-  return new Promise(resolve=>{confirmResolve=resolve;});
+function showConfirmDialog(titleKey, textKey) {
+  return new Promise((resolve) => {
+    const dialog = $("confirmDialog");
+    $("confirmTitle").textContent = t(titleKey);
+    $("confirmText").textContent = t(textKey);
+    
+    const handleClose = () => {
+      dialog.removeEventListener("close", handleClose);
+      resolve(dialog.returnValue === "confirm");
+    };
+    
+    dialog.addEventListener("close", handleClose);
+    dialog.showModal();
+  });
 }
 
-$("confirmDialog").addEventListener("close",()=>{ const result=$("confirmDialog").returnValue==="confirm"; if(confirmResolve){confirmResolve(result);confirmResolve=null;} });
+function initEvents() {
+  $("languageToggle").addEventListener("click", () => {
+    lang = lang === "pl" ? "en" : "pl";
+    localStorage.setItem("sic_language", lang);
+    applyTranslations();
+  });
 
-$("languageToggle").addEventListener("click",()=>{lang=lang==="pl"?"en":"pl";localStorage.setItem("sic_language",lang);applyTranslations();});
-$("playerCount").addEventListener("change",async e=>{try{await setPlayerCount(Number(e.target.value));flash("successBox","message.saved");}catch(err){error(err.message);}});
-$("playersContainer").addEventListener("change",async()=>{try{await saveSetupConfig();flash("successBox","message.saved");}catch(err){error(err.message);}});
-$("elementsTracker").addEventListener("change",async()=>{try{await saveSetupConfig();flash("successBox","message.saved");}catch(err){error(err.message);}});
-$("adversarySelect").addEventListener("change",async()=>{try{await saveSetupConfig();flash("successBox","message.saved");}catch(err){error(err.message);}});
-$("adversaryLevel").addEventListener("change",async()=>{try{await saveSetupConfig();flash("successBox","message.saved");}catch(err){error(err.message);}});
+  $("playerCount").addEventListener("change", async (e) => {
+    const val = Number(e.target.value);
+    await setPlayerCount(val);
+  });
 
-$("startGameButton").addEventListener("click",async()=>{if(!await confirmAction(t("button.start"),t("confirm.start")))return;try{await saveSetupConfig();await startGame();flash("successBox","message.started");}catch(err){error(err.message);}});
-$("advancePhaseButton").addEventListener("click",async()=>{try{await advancePhase();}catch(err){error(err.message);}});
-$("finishGameButton").addEventListener("click",async()=>{if(!await confirmAction(t("button.finish"),t("confirm.finish")))return;try{await finishGame();flash("successBox","message.finished");}catch(err){error(err.message);}});
-$("resetGameButton").addEventListener("click",async()=>{if(!await confirmAction(t("button.reset"),t("confirm.reset")))return;try{await resetGame(1);flash("successBox","message.reset");}catch(err){error(err.message);}});
+  $("playersContainer").addEventListener("change", saveSetupConfig);
+  $("adversarySelect").addEventListener("change", saveSetupConfig);
+  $("adversaryLevel").addEventListener("change", saveSetupConfig);
+  $("elementsTracker").addEventListener("change", saveSetupConfig);
 
-async function boot(){
-  applyTranslations();
-  try {
-    await ensureGameExists();
-    $("connectionBadge").textContent=t("status.connected"); $("connectionBadge").className="badge badge-muted";
-    unsubscribe=onSnapshot(gameRef,snap=>{if(!snap.exists())return;currentGame=snap.data();render(currentGame);},err=>{console.error(err);$("connectionBadge").textContent=t("status.error");error(err.message);});
-  } catch(err){ $("connectionBadge").textContent=t("status.error"); error(err.message); }
+  $("startGameButton").addEventListener("click", async () => {
+    if (await showConfirmDialog("button.start", "confirm.start")) {
+      await startGame();
+    }
+  });
+
+  $("advancePhaseButton").addEventListener("click", async () => {
+    await advancePhase();
+  });
+
+  $("finishGameButton").addEventListener("click", async () => {
+    if (await showConfirmDialog("button.finish", "confirm.finish")) {
+      await finishGame();
+    }
+  });
+
+  $("resetGameButton").addEventListener("click", async () => {
+    if (await showConfirmDialog("reset.title", "confirm.reset")) {
+      await resetGame(currentGame?.player_count || 1);
+    }
+  });
 }
 
-boot();
+// Inicjalizacja podglądu Firestore
+ensureGameExists().then(() => {
+  onSnapshot(gameRef, (snapshot) => {
+    if (snapshot.exists()) {
+      render(snapshot.data());
+      $("connectionBadge").textContent = t("status.connected");
+      $("connectionBadge").className = "badge badge-success";
+    }
+  }, (err) => {
+    console.error(err);
+    $("connectionBadge").textContent = t("status.error");
+    $("connectionBadge").className = "badge badge-danger";
+  });
+});
+
+initEvents();
+applyTranslations();
