@@ -19,18 +19,12 @@
 
   <main class="page-shell">
     <section id="playerPicker" class="picker-card">
-      <div class="picker-icon">SI</div>
-      <p class="eyebrow">PLAYER</p>
       <h2 data-i18n="play.choosePlayer">Wybierz gracza</h2>
-      <p class="muted" data-i18n="play.choosePlayerHint">Numer gracza jest zapamiętany tylko w tej karcie przeglądarki do czasu odświeżenia.</p>
       <div id="playerButtons" class="player-buttons"></div>
     </section>
 
     <section id="spiritPicker" class="picker-card hidden">
-      <div class="picker-icon">✦</div>
-      <p class="eyebrow" id="selectedPlayerLabel">PLAYER</p>
       <h2 data-i18n="play.chooseSpirit">Wybierz ducha</h2>
-      <p class="muted" data-i18n="play.chooseSpiritHint">Wybór ducha jest przechowywany w grze. Nie jest zapisywany lokalnie po odświeżeniu.</p>
       <div id="spiritGrid" class="spirit-grid"></div>
       <div class="picker-actions">
         <button id="backToPlayers" class="button button-ghost" type="button" data-i18n="play.changePlayer">Zmień gracza</button>
@@ -45,6 +39,12 @@
           <h2 id="spiritName">—</h2>
           <p id="adversarySummary" class="muted">—</p>
         </div>
+
+        <div>
+          <p class="eyebrow" data-i18n="play.adversary">PRZECIWNIK</p>
+          <p id="adversarySummary" class="muted">—</p>
+        </div>
+        
         <div class="game-status">
           <span id="gameStatus" class="status-pill">SETUP</span>
           <strong id="phaseName">—</strong>
