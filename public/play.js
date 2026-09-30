@@ -540,10 +540,12 @@ function render(g) {
   // Box adwersarza
   renderAdversary(g);
 
+  // Status wszystkich graczy (TUTAJ BRAKOWAŁO WYWOŁANIA):
+  renderPlayersStatus(g);
+
   // Faza
   $("phaseTitle").textContent = phaseName(phase);
   renderPhaseSteps(phase);
-
   const ready = !!p.ready;
   const readyEligible = phase !== "invader" && phase !== "time_passes";
   $("readyState").textContent = ready ? t("play.readyState") : t("play.notReady");
