@@ -275,16 +275,14 @@ h3 {
 .spirit-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-
   gap: 10px;
   margin-top: 22px;
-
   text-align: left;
 }
 
 .spirit-button {
-  min-height: 76px;
-  padding: 13px;
+  min-height: 150px;
+  padding: 10px;
 
   display: flex;
   flex-direction: column;
@@ -304,10 +302,11 @@ h3 {
 
 .spirit-image {
   width: 100%;
-  height: 120px;
+  height: 110px;
+
+  display: block;
 
   object-fit: contain;
-  display: block;
 }
 
 .spirit-button strong {
@@ -317,8 +316,7 @@ h3 {
 .spirit-button.selected {
   border-color: var(--accent);
 
-  box-shadow:
-    0 0 0 2px rgba(54, 92, 71, 0.12);
+  box-shadow: 0 0 0 2px rgba(54, 92, 71, 0.12);
 
   background: #edf3ee;
 }
