@@ -17,14 +17,233 @@ const PHASES = ["spirit", "fast", "invader", "slow", "time_passes"];
 const ELEMENTS = ["sun", "moon", "fire", "air", "water", "earth", "plant", "animal"];
 
 const SPIRITS = [
-  { id: "river_surges_in_sunlight", pl: "Rzeka Sunie w Blasku Słońca", en: "River Surges in Sunlight", img: "./images/spirits/river.png" },
-  { id: "lightnings_swift_strike", pl: "Szybki Grom", en: "Lightning's Swift Strike", img: "./images/spirits/lightning.png" },
-  { id: "bringer_of_dreams_and_nightmares", pl: "Siewca Snów i Koszmarów", en: "Bringer of Dreams and Nightmares", img: "./images/spirits/bringer.png" },
-  { id: "vital_strength_of_the_earth", pl: "Żywotna Siła Ziemi", en: "Vital Strength of the Earth", img: "./images/spirits/earth.png" },
-  { id: "thunderspeaker", pl: "Głosiciel Gromu", en: "Thunderspeaker", img: "./images/spirits/thunderspeaker.png" },
-  { id: "shadows_flicker_like_flame", pl: "Cienie Migoczące jak Płomień", en: "Shadows Flicker Like Flame", img: "./images/spirits/shadows.png" },
-  { id: "ocean_hungry_grasp", pl: "Ocean Głodnego Uścisku", en: "Ocean's Hungry Grasp", img: "./images/spirits/ocean.png" },
-  { id: "a_spreading_heart_of_green", pl: "Rozrastające się Zielone Serce", en: "A Spread of Rampant Green", img: "./images/spirits/green.png" }
+  {
+    id: "river_surges_in_sunlight",
+    pl: "Rzeka Sunie w Blasku Słońca",
+    en: "River Surges in Sunlight",
+    image: "/images/spirits/132px-River_Surges_in_Sunlight.png"
+  },
+  {
+    id: "lightnings_swift_strike",
+    pl: "Szybki Grom",
+    en: "Lightning's Swift Strike",
+    image: "/images/spirits/132px-Lightning's_Swift_Strike.png"
+  },
+  {
+    id: "bringer_of_dreams_and_nightmares",
+    pl: "Siewca Snów i Koszmarów",
+    en: "Bringer of Dreams and Nightmares",
+    image: "/images/spirits/110px-Bringer_of_Dreams_and_Nightmares.png"
+  },
+  {
+    id: "vital_strength_of_the_earth",
+    pl: "Żywotna Siła Ziemi",
+    en: "Vital Strength of the Earth",
+    image: "/images/spirits/132px-Vital_Strength_of_the_Earth.png"
+  },
+  {
+    id: "thunderspeaker",
+    pl: "Głosiciel Gromu",
+    en: "Thunderspeaker",
+    image: "/images/spirits/128px-Thunderspeaker.png"
+  },
+  {
+    id: "shadows_flicker_like_flame",
+    pl: "Cienie Migoczące jak Płomień",
+    en: "Shadows Flicker Like Flame",
+    image: "/images/spirits/132px-Shadows_Flicker_Like_Flame.png"
+  },
+  {
+    id: "ocean_hungry_grasp",
+    pl: "Ocean Głodnego Uścisku",
+    en: "Ocean's Hungry Grasp",
+    image: "/images/spirits/131px-Ocean's_Hungry_Grasp.png"
+  },
+  {
+    id: "a_spreading_heart_of_green",
+    pl: "Rozrastające się Zielone Serce",
+    en: "A Spread of Rampant Green",
+    image: "/images/spirits/132px-A_Spread_of_Rampant_Green.png"
+  },
+
+  {
+    id: "keeper_of_the_forbidden_wilds",
+    pl: "Strażnik Zakazanej Dziczy",
+    en: "Keeper of the Forbidden Wilds",
+    image: "/images/spirits/132px-Keeper_of_the_Forbidden_Wilds.png"
+  },
+  {
+    id: "sharp_fangs_behind_the_leaves",
+    pl: "Ostre Kły Za Liśćmi",
+    en: "Sharp Fangs Behind the Leaves",
+    image: "/images/spirits/132px-Sharp_Fangs_Behind_the_Leaves.png"
+  },
+
+  {
+    id: "heart_of_the_wildfire",
+    pl: "Serce Pożogi",
+    en: "Heart of the Wildfire",
+    image: "/images/spirits/132px-Heart_of_the_Wildfire.png"
+  },
+  {
+    id: "serpent_slumbering_beneath_the_island",
+    pl: "Wąż Śpiący Pod Wyspą",
+    en: "Serpent Slumbering Beneath the Island",
+    image: "/images/spirits/132px-Serpent_Slumbering_Beneath_the_Island.png"
+  },
+  {
+    id: "downpour_drenches_the_world",
+    pl: "Ulewa Zalewająca Świat",
+    en: "Downpour Drenches the World",
+    image: "/images/spirits/132px-Downpour_Drenches_the_World.png"
+  },
+  {
+    id: "finder_of_paths_unseen",
+    pl: "Odkrywca Niewidocznych Ścieżek",
+    en: "Finder of Paths Unseen",
+    image: "/images/spirits/132px-Finder_of_Paths_Unseen.png"
+  },
+
+  {
+    id: "devouring_teeth_lurk_underfoot",
+    pl: "Pożerające Zęby Czają się Pod Stopami",
+    en: "Devouring Teeth Lurk Underfoot",
+    image: "/images/spirits/117px-Devouring_Teeth_Lurk_Underfoot.png"
+  },
+  {
+    id: "eyes_watch_from_the_trees",
+    pl: "Oczy Obserwujące z Drzew",
+    en: "Eyes Watch from the Trees",
+    image: "/images/spirits/117px-Eyes_Watch_from_the_Trees.png"
+  },
+  {
+    id: "fathomless_mud_of_the_swamp",
+    pl: "Bezdenne Błoto Bagna",
+    en: "Fathomless Mud of the Swamp",
+    image: "/images/spirits/117px-Fathomless_Mud_of_the_Swamp.png"
+  },
+  {
+    id: "rising_heat_of_stone_and_sand",
+    pl: "Wzrastający Żar Kamienia i Piasku",
+    en: "Rising Heat of Stone and Sand",
+    image: "/images/spirits/136px-Rising_Heat_of_Stone_and_Sand.png"
+  },
+  {
+    id: "sun_bright_whirlwind",
+    pl: "Słoneczny Wicher",
+    en: "Sun-Bright Whirlwind",
+    image: "/images/spirits/136px-Sun-Bright_Whirlwind.png"
+  },
+
+  {
+    id: "grinning_trickster_stirs_up_trouble",
+    pl: "Uśmiechnięty Psotnik Wywołuje Kłopoty",
+    en: "Grinning Trickster Stirs Up Trouble",
+    image: "/images/spirits/132px-Grinning_Trickster_Stirs_Up_Trouble.png"
+  },
+  {
+    id: "lure_of_the_deep_wilderness",
+    pl: "Wabik Głębokiej Dziczy",
+    en: "Lure of the Deep Wilderness",
+    image: "/images/spirits/132px-Lure_of_the_Deep_Wilderness.png"
+  },
+  {
+    id: "many_minds_move_as_one",
+    pl: "Wiele Umysłów Porusza się jak Jeden",
+    en: "Many Minds Move as One",
+    image: "/images/spirits/132px-Many_Minds_Move_as_One.png"
+  },
+  {
+    id: "shifting_memory_of_ages",
+    pl: "Zmienna Pamięć Wieków",
+    en: "Shifting Memory of Ages",
+    image: "/images/spirits/132px-Shifting_Memory_of_Ages.png"
+  },
+  {
+    id: "stones_unyielding_defiance",
+    pl: "Niezłomny Opór Kamienia",
+    en: "Stone's Unyielding Defiance",
+    image: "/images/spirits/132px-Stone's_Unyielding_Defiance.png"
+  },
+  {
+    id: "volcano_looming_high",
+    pl: "Wyniosły Wulkan",
+    en: "Volcano Looming High",
+    image: "/images/spirits/132px-Volcano_Looming_High.png"
+  },
+  {
+    id: "shroud_of_silent_mist",
+    pl: "Całun Cichej Mgły",
+    en: "Shroud of Silent Mist",
+    image: "/images/spirits/132px-Shroud_of_Silent_Mist.png"
+  },
+  {
+    id: "vengeance_as_a_burning_plague",
+    pl: "Zemsta jako Płonąca Plaga",
+    en: "Vengeance as a Burning Plague",
+    image: "/images/spirits/132px-Vengeance_as_a_Burning_Plague.png"
+  },
+  {
+    id: "fractured_days_split_the_sky",
+    pl: "Rozbite Dni Rozdzierają Niebo",
+    en: "Fractured Days Split the Sky",
+    image: "/images/spirits/132px-Fractured_Days_Split_the_Sky.png"
+  },
+  {
+    id: "starlight_seeks_its_form",
+    pl: "Światło Gwiazd Szuka Swojej Formy",
+    en: "Starlight Seeks Its Form",
+    image: "/images/spirits/132px-Starlight_Seeks_Its_Form.png"
+  },
+
+  {
+    id: "ember_eyed_behemoth",
+    pl: "Behemot o Oczach Żaru",
+    en: "Ember-Eyed Behemoth",
+    image: "/images/spirits/132px-Ember-Eyed_Behemoth.png"
+  },
+  {
+    id: "hearth_vigil",
+    pl: "Czuwanie Domowego Ogniska",
+    en: "Hearth-Vigil",
+    image: "/images/spirits/132px-Hearth-Vigil.png"
+  },
+  {
+    id: "towering_roots_of_the_jungle",
+    pl: "Strzeliste Korzenie Dżungli",
+    en: "Towering Roots of the Jungle",
+    image: "/images/spirits/132px-Towering_Roots_of_the_Jungle.png"
+  },
+  {
+    id: "breath_of_darkness_down_your_spine",
+    pl: "Oddech Ciemności Wzdłuż Kręgosłupa",
+    en: "Breath of Darkness Down Your Spine",
+    image: "/images/spirits/132px-Breath_of_Darkness_Down_Your_Spine.png"
+  },
+  {
+    id: "relentless_gaze_of_the_sun",
+    pl: "Nieustępliwe Spojrzenie Słońca",
+    en: "Relentless Gaze of the Sun",
+    image: "/images/spirits/132px-Relentless_Gaze_of_the_Sun.png"
+  },
+  {
+    id: "wandering_voice_keens_delirium",
+    pl: "Błądzący Głos Wyje Obłęd",
+    en: "Wandering Voice Keens Delirium",
+    image: "/images/spirits/127px-Wandering_Voice_Keens_Delirium.png"
+  },
+  {
+    id: "wounded_waters_bleeding",
+    pl: "Zranione Wody Krwawią",
+    en: "Wounded Waters Bleeding",
+    image: "/images/spirits/132px-Wounded_Waters_Bleeding.png"
+  },
+  {
+    id: "dances_up_earthquakes",
+    pl: "Tańczy na Trzęsieniach Ziemi",
+    en: "Dances Up Earthquakes",
+    image: "/images/spirits/132px-Dances_Up_Earthquakes.png"
+  }
 ];
 
 const ELEMENT_ICONS = {
@@ -45,6 +264,15 @@ const PHASE_STEPS = {
   slow: { pl: ["Wolne Moce z kart", "Wolne Zdolności Wrodzone"], en: ["Slow Power Cards", "Slow Innate Powers"] },
   time_passes: { pl: ["Odrzuć zagrane karty Mocy", "Odnów zużyte karty", "Przesuń się do następnej tury"], en: ["Discard played Power Cards", "Recover spent cards", "Move to the next turn"] }
 };
+
+const ADVERSARIES = [{ id: null, pl: "Brak", en: "None", cardText: "" },
+                     { id: "brandenburg_prussia", pl: "Brandenburgia-Prusy", en: "Brandenburg-Prussia" },
+                     { id: "england", pl: "Anglia", en: "England" }, { id: "sweden", pl: "Szwecja", en: "Sweden" },
+                     { id: "france", pl: "Francja", en: "France (Plantation Colony)" },
+                     { id: "habsburg_monarchy", pl: "Monarchia Habsburgów", en: "Habsburg Monarchy (Livestock Colony)" },
+                     { id: "russia", pl: "Rosja", en: "Russia" }, { id: "scotland", pl: "Szkocja", en: "Scotland" },
+                     { id: "habsburg_mining_expedition", pl: "Habsburska Ekspedycja Górnicza", en: "Habsburg Mining Expedition" }
+                    ];
 
 const I18N = {
   pl: {
@@ -239,7 +467,7 @@ function renderFear(g) {
     fearControls.innerHTML = "";
   } else {
     fearControls.classList.remove("hidden");
-    fearControls.innerHTML = [1, 3, 5].map(n => `
+    fearControls.innerHTML = [-1, 1, 3, 5].map(n => `
       <button class="fear-button" data-fear="${n}" type="button" ${g.game_status === "active" ? "" : "disabled"}>
         +${n}
       </button>
