@@ -24,12 +24,16 @@
     </section>
 
     <section id="spiritPicker" class="picker-card hidden">
+      <div class="picker-icon">✦</div>
+      <p class="eyebrow" id="selectedPlayerLabel">PLAYER</p>
       <h2 data-i18n="play.chooseSpirit">Wybierz ducha</h2>
+      <p class="muted" data-i18n="play.chooseSpiritHint">Wybór ducha jest przechowywany w grze. Nie jest zapisywany lokalnie po odświeżeniu.</p>
       <div id="spiritGrid" class="spirit-grid"></div>
       <div class="picker-actions">
         <button id="backToPlayers" class="button button-ghost" type="button" data-i18n="play.changePlayer">Zmień gracza</button>
       </div>
     </section>
+    
 
     <section id="gameView" class="hidden">
       <div id="messageBox" class="alert alert-error hidden"></div>
