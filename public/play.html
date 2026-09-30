@@ -46,21 +46,11 @@
       <div id="adversaryCard" class="card adversary-card">
         <div class="card-header">
           <div>
-            <p class="eyebrow">ADVERSARY</p>
+            <p class="eyebrow" data-i18n="play.adversary">PRZECIWNIK</p>
             <h3 id="adversaryTitle">—</h3>
           </div>
         </div>
         <div id="adversaryBoard" class="adversary-board-container"></div>
-      </div>
-
-      <!-- Karta ze statusem wszystkich graczy -->
-      <div class="card">
-        <div class="card-header">
-          <h3>Status Graczy</h3>
-        </div>
-        <div id="playersStatusList" class="overview-list">
-          <!-- Renderowani gracze, ich duchy i status gotowości -->
-        </div>
       </div>
 
       <div class="layout">
@@ -69,7 +59,8 @@
           <article class="card">
             <div class="card-header">
               <div>
-                <h3>STRACH</h3>
+                <p>STRACH</p>
+          <p class="eyebrow" data-i18n="play.fear">STRACH</p>
               </div>
               <div class="fear-summary">
                 <small id="fearCards">0 kart zdobytych</small>
@@ -84,6 +75,16 @@
             <div id="fearControls" class="fear-controls"></div>
           </article>
 
+      <!-- Karta ze statusem wszystkich graczy -->
+      <div class="card">
+        <div class="card-header">
+          <p class="eyebrow" data-i18n="play.player.statuses">STATUS GRACZY</p>
+        </div>
+        <div id="playersStatusList" class="overview-list">
+          <!-- Renderowani gracze, ich duchy i status gotowości -->
+        </div>
+      </div>
+          
           <!-- Box AKTUALNA FAZA -->
           <article class="card phase-card">
             <div class="phase-head">
