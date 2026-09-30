@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Spirit Island Companion — Setup</title>
+  <link rel="stylesheet" href="./setup.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow" data-i18n="app.eyebrow">HOST / ADMIN</p>
+      <h1 data-i18n="app.title">Spirit Island Companion</h1>
+    </div>
+    <div class="topbar-actions">
+      <span id="connectionBadge" class="badge badge-muted" data-i18n="status.connecting">Łączenie…</span>
+      <button id="languageToggle" class="button button-ghost" type="button">EN</button>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero-card">
+      <div>
+        <span id="statusBadge" class="status-pill status-setup">SETUP</span>
+        <h2 id="phaseTitle">Konfiguracja gry</h2>
+        <p id="phaseSubtitle" class="muted">Ustaw graczy i parametry, a następnie uruchom grę.</p>
+      </div>
+      <div class="hero-actions">
+        <button id="startGameButton" class="button button-primary" type="button">START GAME</button>
+        <button id="advancePhaseButton" class="button" type="button">ADVANCE PHASE</button>
+        <button id="finishGameButton" class="button button-danger" type="button">END GAME / STOP TIMERS</button>
+      </div>
+    </section>
+
+    <div id="errorBox" class="alert alert-error hidden"></div>
+    <div id="successBox" class="alert alert-success hidden"></div>
+
+    <section class="grid grid-main">
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <h3 data-i18n="setup.players.title">Gracze</h3>
+            <p class="muted" data-i18n="setup.players.description">Liczba graczy, duchy i uprawnienia.</p>
+          </div>
+          <label class="field compact-field">
+            <span data-i18n="setup.players.count">Liczba graczy</span>
+            <select id="playerCount"></select>
+          </label>
+        </div>
+        <div id="playersContainer" class="players-list"></div>
+      </article>
+
+      <aside class="stack">
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <h3 data-i18n="setup.global.title">Ustawienia globalne</h3>
+              <p class="muted" data-i18n="setup.global.description">Opcje wspólne dla całej gry.</p>
+            </div>
+          </div>
+          <label class="switch-row">
+            <span>
+              <strong data-i18n="setup.global.elements">Tracker żywiołów</strong>
+              <small data-i18n="setup.global.elementsHint">Pozwala graczom śledzić własne żywioły.</small>
+            </span>
+            <input id="elementsTracker" type="checkbox">
+          </label>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <h3 data-i18n="setup.adversary.title">Adwersarz</h3>
+              <p class="muted" data-i18n="setup.adversary.description">Wybierz adwersarza i poziom.</p>
+            </div>
+          </div>
+          <div class="form-grid">
+            <label class="field">
+              <span data-i18n="setup.adversary.name">Adwersarz</span>
+              <select id="adversarySelect"></select>
+            </label>
+            <label class="field">
+              <span data-i18n="setup.adversary.level">Poziom</span>
+              <select id="adversaryLevel"></select>
+            </label>
+          </div>
+          <div id="adversaryPreview" class="info-box"></div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <div>
+              <h3 data-i18n="setup.fear.title">Strach</h3>
+              <p class="muted" data-i18n="setup.fear.description">Podgląd bieżącego poziomu strachu.</p>
+            </div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><span data-i18n="setup.fear.total">Wygenerowano</span><strong id="fearTotal">0</strong></div>
+            <div class="stat"><span data-i18n="setup.fear.cards">Zdobyte karty</span><strong id="fearCards">0</strong></div>
+            <div class="stat"><span data-i18n="setup.fear.pool">Pula</span><strong id="fearPool">0 / 0</strong></div>
+          </div>
+          <p class="tiny muted" data-i18n="setup.fear.note">Strach zmieniają uprawnieni gracze na ekranie gry.</p>
+        </article>
+      </aside>
+    </section>
+
+    <section class="grid grid-main">
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <h3 data-i18n="stats.title">Statystyki czasu</h3>
+            <p class="muted" data-i18n="stats.description">Czas jest zapisywany przy READY, zmianie fazy i zakończeniu gry.</p>
+          </div>
+          <div class="phase-clock">
+            <span data-i18n="stats.currentPhase">Aktualna faza</span>
+            <strong id="currentPhaseLabel">—</strong>
+            <small id="phaseStartedAt">—</small>
+          </div>
+        </div>
+        <div id="playerStats" class="stats-table-wrap"></div>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <h3 data-i18n="history.title">Historia faz</h3>
+            <p class="muted" data-i18n="history.description">Zapisane czasy zakończonych faz.</p>
+          </div>
+        </div>
+        <div id="phaseHistory" class="history-list"></div>
+      </article>
+    </section>
+
+    <section class="card danger-zone">
+      <div>
+        <h3 data-i18n="reset.title">Reset gry</h3>
+        <p class="muted" data-i18n="reset.description">Kasuje bieżący stan, statystyki, strach, wybory duchów i historię.</p>
+      </div>
+      <div class="danger-actions">
+        <button id="resetGameButton" class="button button-danger-outline" type="button">RESET GAME</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="confirmDialog" class="confirm-dialog">
+    <form method="dialog" class="confirm-card">
+      <h3 id="confirmTitle">Potwierdź</h3>
+      <p id="confirmText" class="muted"></p>
+      <div class="confirm-actions">
+        <button value="cancel" class="button button-ghost" type="submit" data-i18n="common.cancel">Anuluj</button>
+        <button value="confirm" id="confirmAction" class="button button-danger" type="submit" data-i18n="common.confirm">Potwierdź</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="./setup.js"></script>
+</body>
+</html>
