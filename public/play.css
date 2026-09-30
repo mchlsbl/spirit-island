@@ -400,7 +400,7 @@ h3 {
 
 .fear-bar-fill {
   height: 100%;
-  background-color: var(--accent);
+  background-color: #90889f;
   transition: width 0.3s ease;
 }
 
@@ -415,7 +415,7 @@ h3 {
   justify-content: center;
   font-weight: 900;
   font-size: 13px;
-  color: #20211f;
+  color: #141414;
   mix-blend-mode: difference;
 }
 
