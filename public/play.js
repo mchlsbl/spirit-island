@@ -19,49 +19,49 @@ const ELEMENTS = ["sun", "moon", "fire", "air", "water", "earth", "plant", "anim
 const SPIRITS = [
   {
     id: "river_surges_in_sunlight",
-    pl: "Rzeka Sunie w Blasku Słońca",
+    pl: "Skąpana Słońcem Rzeka",
     en: "River Surges in Sunlight",
     image: "/images/spirits/132px-River_Surges_in_Sunlight.png"
   },
   {
     id: "lightnings_swift_strike",
-    pl: "Szybki Grom",
+    pl: "Błyskawica z Serca Burzy",
     en: "Lightning's Swift Strike",
     image: "/images/spirits/132px-Lightning's_Swift_Strike.png"
   },
   {
     id: "bringer_of_dreams_and_nightmares",
-    pl: "Siewca Snów i Koszmarów",
+    pl: "Zsyłający Sny i Koszmary",
     en: "Bringer of Dreams and Nightmares",
     image: "/images/spirits/110px-Bringer_of_Dreams_and_Nightmares.png"
   },
   {
     id: "vital_strength_of_the_earth",
-    pl: "Żywotna Siła Ziemi",
+    pl: "Kolosalna Siła Ziemi",
     en: "Vital Strength of the Earth",
     image: "/images/spirits/132px-Vital_Strength_of_the_Earth.png"
   },
   {
     id: "thunderspeaker",
-    pl: "Głosiciel Gromu",
+    pl: "Głos Burzy",
     en: "Thunderspeaker",
     image: "/images/spirits/128px-Thunderspeaker.png"
   },
   {
     id: "shadows_flicker_like_flame",
-    pl: "Cienie Migoczące jak Płomień",
+    pl: "Cień Migoczący Niczym Płomień",
     en: "Shadows Flicker Like Flame",
     image: "/images/spirits/132px-Shadows_Flicker_Like_Flame.png"
   },
   {
     id: "ocean_hungry_grasp",
-    pl: "Ocean Głodnego Uścisku",
+    pl: "Zryw Wygłodnialego Oceanu",
     en: "Ocean's Hungry Grasp",
     image: "/images/spirits/131px-Ocean's_Hungry_Grasp.png"
   },
   {
     id: "a_spreading_heart_of_green",
-    pl: "Rozrastające się Zielone Serce",
+    pl: "Nieokiełznany Siewca Zieleni",
     en: "A Spread of Rampant Green",
     image: "/images/spirits/132px-A_Spread_of_Rampant_Green.png"
   },
@@ -409,8 +409,7 @@ function renderSpiritPicker(g) {
       <button class="spirit-button ${isSelected ? "selected" : ""}" data-spirit="${s.id}" type="button">
         ${s.img ? `<img src="${s.img}" alt="${s.pl}" class="spirit-img" onerror="this.style.display='none'">` : ""}
         <div class="spirit-names">
-          <strong>${s.pl}</strong>
-          <small>${s.en}</small>
+          <strong>${name}</strong>
         </div>
       </button>
     `;
