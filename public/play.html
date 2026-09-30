@@ -3,14 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Spirit Island Companion — Play</title>
+  <title>SPIRIT ISLAND HELPER</title>
   <link rel="stylesheet" href="./play.css">
 </head>
 <body>
   <header class="topbar">
     <div>
-      <p class="eyebrow">SPIRIT ISLAND COMPANION</p>
-      <h1>Play</h1>
+      <h1 class="main-title">SPIRIT ISLAND HELPER</h1>
     </div>
     <div class="topbar-actions">
       <span id="connectionBadge" class="badge">Łączenie…</span>
@@ -19,42 +18,66 @@
   </header>
 
   <main class="page-shell">
+    <!-- Wybór gracza -->
     <section id="playerPicker" class="picker-card">
-      <div class="picker-icon">SI</div>
-      <p class="eyebrow">PLAYER</p>
       <h2 data-i18n="play.choosePlayer">Wybierz gracza</h2>
-      <p class="muted" data-i18n="play.choosePlayerHint">Numer gracza jest zapamiętany tylko w tej karcie przeglądarki do czasu odświeżenia.</p>
       <div id="playerButtons" class="player-buttons"></div>
     </section>
 
+    <!-- Wybór ducha -->
     <section id="spiritPicker" class="picker-card hidden">
-      <div class="picker-icon">✦</div>
-      <p class="eyebrow" id="selectedPlayerLabel">PLAYER</p>
       <h2 data-i18n="play.chooseSpirit">Wybierz ducha</h2>
-      <p class="muted" data-i18n="play.chooseSpiritHint">Wybór ducha jest przechowywany w grze. Nie jest zapisywany lokalnie po odświeżeniu.</p>
       <div id="spiritGrid" class="spirit-grid"></div>
       <div class="picker-actions">
         <button id="backToPlayers" class="button button-ghost" type="button" data-i18n="play.changePlayer">Zmień gracza</button>
       </div>
     </section>
 
+    <!-- Główny widok gry -->
     <section id="gameView" class="hidden">
       <div id="messageBox" class="alert alert-error hidden"></div>
+      
+      <!-- Nagłówek gry: tylko nazwa ducha -->
       <div class="game-header card">
-        <div>
-          <p class="eyebrow" id="playerIdentity">PLAYER</p>
-          <h2 id="spiritName">—</h2>
-          <p id="adversarySummary" class="muted">—</p>
+        <h2 id="spiritName">—</h2>
+      </div>
+
+      <!-- Karta adwersarza i poziomu -->
+      <div id="adversaryCard" class="card adversary-card">
+        <div class="card-header">
+          <div>
+            <p class="eyebrow">ADVERSARY</p>
+            <h3 id="adversaryTitle">—</h3>
+          </div>
         </div>
-        <div class="game-status">
-          <span id="gameStatus" class="status-pill">SETUP</span>
-          <strong id="phaseName">—</strong>
-          <small id="turnLabel">—</small>
+        <div id="adversaryBoard" class="adversary-board-container">
+          <!-- Obrazek / plansza adwersarza renderowana dynamicznie -->
         </div>
       </div>
 
       <div class="layout">
         <div class="main-column">
+          <!-- Box STRACH (przeniesiony nad Aktualną Fazę) -->
+          <article class="card">
+            <div class="card-header">
+              <div>
+                <h3>STRACH</h3>
+              </div>
+              <div class="fear-summary">
+                <small id="fearCards">0 kart zdobytych</small>
+              </div>
+            </div>
+            
+            <!-- Pasek postępu strachu -->
+            <div class="fear-bar-container">
+              <div id="fearProgressBar" class="fear-bar-fill" style="width: 0%;"></div>
+              <span id="fearProgressText" class="fear-bar-text">0/0</span>
+            </div>
+
+            <div id="fearControls" class="fear-controls"></div>
+          </article>
+
+          <!-- Box AKTUALNA FAZA -->
           <article class="card phase-card">
             <div class="phase-head">
               <div>
@@ -66,64 +89,15 @@
             <div id="phaseSteps" class="phase-steps"></div>
             <div class="phase-actions">
               <button id="readyButton" class="button button-primary button-large" type="button">READY</button>
-              <button id="advanceButton" class="button button-secondary" type="button" data-i18n="play.advance">ADVANCE PHASE</button>
+              <button id="advanceButton" class="button button-secondary hidden" type="button" data-i18n="play.advance">ADVANCE PHASE</button>
             </div>
-            <p id="permissionHint" class="tiny muted"></p>
           </article>
 
+          <!-- Box TRACKER (Żywioły) -->
           <article id="elementsCard" class="card">
-            <div class="card-header">
-              <div>
-                <p class="eyebrow" data-i18n="play.elements.eyebrow">TRACKER</p>
-                <h3 data-i18n="play.elements.title">Żywioły</h3>
-                <p class="muted" data-i18n="play.elements.description">Śledź aktywne żywioły swojego ducha.</p>
-              </div>
-              <button id="resetElementsButton" class="button button-ghost" type="button" data-i18n="play.elements.reset">Resetuj</button>
-            </div>
             <div id="elementsGrid" class="elements-grid"></div>
           </article>
-
-          <article class="card">
-            <div class="card-header">
-              <div>
-                <p class="eyebrow" data-i18n="play.fear.eyebrow">FEAR</p>
-                <h3 data-i18n="play.fear.title">Strach</h3>
-              </div>
-              <div class="fear-summary">
-                <strong id="fearPool">0 / 0</strong>
-                <small id="fearCards">0 kart</small>
-              </div>
-            </div>
-            <div id="fearControls" class="fear-controls"></div>
-            <p id="fearPermission" class="tiny muted"></p>
-          </article>
         </div>
-
-        <aside class="side-column">
-          <article class="card">
-            <div class="card-header">
-              <div>
-                <p class="eyebrow" data-i18n="play.overview.eyebrow">GAME</p>
-                <h3 data-i18n="play.overview.title">Przegląd</h3>
-              </div>
-            </div>
-            <dl class="overview-list">
-              <div><dt data-i18n="play.overview.players">Gracze</dt><dd id="overviewPlayers">—</dd></div>
-              <div><dt data-i18n="play.overview.adversary">Adwersarz</dt><dd id="overviewAdversary">—</dd></div>
-              <div><dt data-i18n="play.overview.elements">Tracker żywiołów</dt><dd id="overviewElements">—</dd></div>
-            </dl>
-          </article>
-
-          <article class="card">
-            <div class="card-header">
-              <div>
-                <p class="eyebrow" data-i18n="play.permissions.eyebrow">PERMISSIONS</p>
-                <h3 data-i18n="play.permissions.title">Twoje uprawnienia</h3>
-              </div>
-            </div>
-            <ul id="permissionsList" class="permission-list"></ul>
-          </article>
-        </aside>
       </div>
     </section>
   </main>
