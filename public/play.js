@@ -488,6 +488,34 @@ function renderAdversary(g) {
   }
 }
 
+/* Renderowanie statusu wszystkich graczy */
+function renderPlayersStatus(g) {
+  const listContainer = $("playersStatusList");
+  const totalPlayers = g.player_count || 0;
+  let html = "";
+
+  for (let i = 1; i <= totalPlayers; i++) {
+    const p = g.players?.[String(i)] || {};
+    const isMe = i === selectedPlayer;
+    const isReady = !!p.ready;
+    const spiritText = p.spirit_id ? spiritName(p.spirit_id) : (lang === "pl" ? "Brak ducha" : "No spirit");
+
+    html += `
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border);">
+        <div>
+          <strong>Gracz ${i} ${isMe ? "(Ty)" : ""}</strong>
+          <div style="font-size: 12px; color: var(--muted);">${spiritText}</div>
+        </div>
+        <span class="ready-badge ${isReady ? "ready-yes" : "ready-no"}">
+          ${isReady ? t("play.readyState") : t("play.notReady")}
+        </span>
+      </div>
+    `;
+  }
+
+  listContainer.innerHTML = html;
+}
+
 function render(g) {
   if (!selectedPlayer) {
     showPlayerPicker();
