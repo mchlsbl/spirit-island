@@ -293,7 +293,7 @@ const I18N = {
     "status.setup": "SETUP",
     "status.active": "ACTIVE",
     "status.finished": "FINISHED",
-    "message.error": "Wystąpił błąd."
+    "message.error": "Wystąpił błąd.",
     "play.elements.reset":"RESETUJ ŻYWIOŁY"
   },
   en: {
@@ -314,7 +314,7 @@ const I18N = {
     "status.setup": "SETUP",
     "status.active": "ACTIVE",
     "status.finished": "FINISHED",
-    "message.error": "Something went wrong."
+    "message.error": "Something went wrong.",
     "play.elements.reset":"RESET ELEMENTS"
   }
 };
