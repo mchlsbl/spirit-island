@@ -37,7 +37,7 @@
     <section id="gameView" class="hidden">
       <div id="messageBox" class="alert alert-error hidden"></div>
       
-      <!-- Nagłówek gry: tylko nazwa ducha -->
+      <!-- Nagłówek gry: nazwa ducha -->
       <div class="game-header card">
         <h2 id="spiritName">—</h2>
       </div>
@@ -50,14 +50,22 @@
             <h3 id="adversaryTitle">—</h3>
           </div>
         </div>
-        <div id="adversaryBoard" class="adversary-board-container">
-          <!-- Obrazek / plansza adwersarza renderowana dynamicznie -->
+        <div id="adversaryBoard" class="adversary-board-container"></div>
+      </div>
+
+      <!-- Karta ze statusem wszystkich graczy -->
+      <div class="card">
+        <div class="card-header">
+          <h3>Status Graczy</h3>
+        </div>
+        <div id="playersStatusList" class="overview-list">
+          <!-- Renderowani gracze, ich duchy i status gotowości -->
         </div>
       </div>
 
       <div class="layout">
         <div class="main-column">
-          <!-- Box STRACH (przeniesiony nad Aktualną Fazę) -->
+          <!-- Box STRACH -->
           <article class="card">
             <div class="card-header">
               <div>
@@ -68,7 +76,6 @@
               </div>
             </div>
             
-            <!-- Pasek postępu strachu -->
             <div class="fear-bar-container">
               <div id="fearProgressBar" class="fear-bar-fill" style="width: 0%;"></div>
               <span id="fearProgressText" class="fear-bar-text">0/0</span>
@@ -93,9 +100,12 @@
             </div>
           </article>
 
-          <!-- Box TRACKER (Żywioły) -->
+          <!-- Box TRACKER (Żywioły) + Przycisk Reset pod spodem -->
           <article id="elementsCard" class="card">
             <div id="elementsGrid" class="elements-grid"></div>
+            <div style="margin-top: 14px; text-align: center;">
+              <button id="resetElementsButton" class="button button-ghost" type="button" data-i18n="play.elements.reset">Resetuj żywioły</button>
+            </div>
           </article>
         </div>
       </div>
