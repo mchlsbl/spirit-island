@@ -351,9 +351,19 @@ function error(message) {
 
 function formatAdversary(g) {
   const adv = g.adversary;
-  if (!adv || !adv.id || adv.id === "none") return lang === "pl" ? "Brak" : "None";
-  const name = adv.id === "prussia" ? (lang === "pl" ? "Królestwo Prus" : "Kingdom of Prussia") : adv.id;
-  const level = adv.level !== undefined ? ` / Poziom ${adv.level}` : "";
+  if (!adv || !adv.id || adv.id === "none") {
+    const noneAdv = ADVERSARIES.find(a => a.id === null);
+    return lang === "pl" ? noneAdv.pl : noneAdv.en;
+  }
+
+  // Szukamy adwersarza w tablicy ADVERSARIES
+  const match = ADVERSARIES.find(a => a.id === adv.id);
+  const name = match ? (lang === "pl" ? match.pl : match.en) : adv.id;
+  
+  // Formatowanie poziomu trudności (jeśli występuje)
+  const levelText = lang === "pl" ? "Poziom" : "Level";
+  const level = adv.level !== undefined && adv.level !== null ? ` / ${levelText} ${adv.level}` : "";
+  
   return `${name}${level}`;
 }
 
