@@ -294,6 +294,7 @@ const I18N = {
     "status.active": "ACTIVE",
     "status.finished": "FINISHED",
     "message.error": "Wystąpił błąd."
+    "play.elements.reset":"RESETUJ ŻYWIOŁY"
   },
   en: {
     "play.choosePlayer": "Choose player",
@@ -314,6 +315,7 @@ const I18N = {
     "status.active": "ACTIVE",
     "status.finished": "FINISHED",
     "message.error": "Something went wrong."
+    "play.elements.reset":"RESET ELEMENTS"
   }
 };
 
@@ -326,7 +328,7 @@ let unsubscribe = null;
 const $ = id => document.getElementById(id);
 const emptyElements = () => ({ sun: 0, moon: 0, fire: 0, air: 0, water: 0, earth: 0, plant: 0, animal: 0 });
 const getSpiritObj = id => SPIRITS.find(x => x.id === id);
-const spiritName = id => { const s = getSpiritObj(id); return s ? `${s.pl} / ${s.en}` : "—"; };
+const spiritName = id => { const s = getSpiritObj(id); if (!s) return "—";return lang === "pl" ? s.pl : s.en;};
 const t = k => I18N[lang]?.[k] ?? I18N.pl[k] ?? k;
 
 function setConnection(text, ok = true) {
@@ -402,6 +404,7 @@ function renderSpiritPicker(g) {
   const selected = g.players?.[String(selectedPlayer)]?.spirit_id || null;
   $("spiritGrid").innerHTML = SPIRITS.map(s => {
     const isSelected = s.id === selected;
+    const name = lang === "pl" ? s.pl : s.en;
     return `
       <button class="spirit-button ${isSelected ? "selected" : ""}" data-spirit="${s.id}" type="button">
         ${s.img ? `<img src="${s.img}" alt="${s.pl}" class="spirit-img" onerror="this.style.display='none'">` : ""}
