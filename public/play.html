@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Spirit Island Helper</title>
+  <title>Spirit Island Companion — Play</title>
   <link rel="stylesheet" href="./play.css">
 </head>
 <body>
   <header class="topbar">
     <div>
-      <p class="eyebrow">SPIRIT ISLAND HELPER</p>
+      <p class="eyebrow">SPIRIT ISLAND COMPANION</p>
+      <h1>Play</h1>
     </div>
     <div class="topbar-actions">
       <span id="connectionBadge" class="badge">Łączenie…</span>
@@ -19,7 +20,10 @@
 
   <main class="page-shell">
     <section id="playerPicker" class="picker-card">
+      <div class="picker-icon">SI</div>
+      <p class="eyebrow">PLAYER</p>
       <h2 data-i18n="play.choosePlayer">Wybierz gracza</h2>
+      <p class="muted" data-i18n="play.choosePlayerHint">Numer gracza jest zapamiętany tylko w tej karcie przeglądarki do czasu odświeżenia.</p>
       <div id="playerButtons" class="player-buttons"></div>
     </section>
 
@@ -33,7 +37,6 @@
         <button id="backToPlayers" class="button button-ghost" type="button" data-i18n="play.changePlayer">Zmień gracza</button>
       </div>
     </section>
-    
 
     <section id="gameView" class="hidden">
       <div id="messageBox" class="alert alert-error hidden"></div>
@@ -43,12 +46,6 @@
           <h2 id="spiritName">—</h2>
           <p id="adversarySummary" class="muted">—</p>
         </div>
-
-        <div>
-          <p class="eyebrow" data-i18n="play.adversary">PRZECIWNIK</p>
-          <p id="adversarySummary" class="muted">—</p>
-        </div>
-        
         <div class="game-status">
           <span id="gameStatus" class="status-pill">SETUP</span>
           <strong id="phaseName">—</strong>
