@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getFirestore, doc, getDoc, setDoc, updateDoc, onSnapshot, runTransaction, arrayUnion } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyAghGIes3l1tri3LDifzjo0WFqRGyrG4nE",
   authDomain: "spirit-island-fb793.firebaseapp.com",
