@@ -55,14 +55,19 @@
               <h3 data-i18n="setup.global.title">Tracker żywiołów</h3>
             </div>
           </div>
-          <div class="form-grid">
+             <label class="switch-row">
             <label class="field">
+            <span>
               <select id="elementsTrackerSelect">
+              <strong data-i18n="setup.global.elements">Tracker żywiołów</strong>
                 <option value="true" data-i18n="common.enabled">Włączony</option>
+              <small data-i18n="setup.global.elementsHint">Pozwala graczom śledzić własne żywioły.</small>
                 <option value="false" data-i18n="common.disabled">Wyłączony</option>
+            </span>
               </select>
+            <input id="elementsTracker" type="checkbox">
             </label>
-          </div>
+          </label>
         </article>
 
         <article class="card">
@@ -80,6 +85,7 @@
               <select id="adversaryLevel"></select>
             </label>
           </div>
+          <div id="adversaryPreview" class="info-box"></div>
         </article>
 
         <article class="card">
