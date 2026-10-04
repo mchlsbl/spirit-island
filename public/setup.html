@@ -60,9 +60,7 @@
             <span>
               <select id="elementsTrackerSelect">
               <strong data-i18n="setup.global.elements">Tracker żywiołów</strong>
-                <option value="true" data-i18n="common.enabled">Włączony</option>
               <small data-i18n="setup.global.elementsHint">Pozwala graczom śledzić własne żywioły.</small>
-                <option value="false" data-i18n="common.disabled">Wyłączony</option>
             </span>
               </select>
             <input id="elementsTracker" type="checkbox">
@@ -70,23 +68,35 @@
           </label>
         </article>
 
-        <article class="card">
-          <div class="card-header">
-            <div>
-              <h3 data-i18n="setup.adversary.title">Przeciwnik</h3>
-            </div>
-          </div>
-          <div class="form-grid">
-            <label class="field">
-              <select id="adversarySelect"></select>
-            </label>
-            <label class="field">
-              <span data-i18n="setup.adversary.level">Poziom</span>
-              <select id="adversaryLevel"></select>
-            </label>
-          </div>
-          <div id="adversaryPreview" class="info-box"></div>
-        </article>
+<article class="card">
+  <div class="card-header">
+    <div>
+      <h3 data-i18n="setup.adversary.title">Przeciwnicy</h3>
+    </div>
+  </div>
+  <div class="form-grid">
+    <!-- Główny Przeciwnik -->
+    <label class="field">
+      <span data-i18n="setup.adversary.primary">Główny przeciwnik</span>
+      <select id="adversarySelect"></select>
+    </label>
+    <label class="field">
+      <span data-i18n="setup.adversary.level">Poziom</span>
+      <select id="adversaryLevel"></select>
+    </label>
+
+    <!-- Drugi Przeciwnik -->
+    <label class="field">
+      <span data-i18n="setup.adversary.secondary">Drugi przeciwnik</span>
+      <select id="adversarySelect_2"></select>
+    </label>
+    <label class="field">
+      <span data-i18n="setup.adversary.level">Poziom</span>
+      <select id="adversaryLevel_2"></select>
+    </label>
+  </div>
+  <div id="adversaryPreview" class="info-box"></div>
+</article>
 
         <article class="card">
           <div class="card-header">
