@@ -122,13 +122,13 @@ h3 {
 }
 
 .ready-yes {
-  background: #dfe9e1;
-  color: #315b42;
+  background: var(--accent);
+  color: #E8E8E8;
 }
 
 .ready-no {
-  background: #eeeae2;
-  color: #66625b;
+  background: #733225;
+  color: #E8E8E8;
 }
 
 .page-shell {
@@ -365,7 +365,7 @@ h3 {
 }
 
 .button:disabled {
-  opacity: .42;
+  opacity: .5;
   cursor: not-allowed;
 }
 
