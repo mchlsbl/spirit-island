@@ -30,7 +30,7 @@
 
 html, body {
   /* Zapewnia, że strona ma co najmniej 100% wysokości okna przeglądarki */
-  min-height: 100vh;
+  min-height: 120vh;
   margin: 0;
   padding: 0;
 }
@@ -39,7 +39,7 @@ body {
   margin: 0;
   background-image: url('./images/Ocean_Terrain.png');
   background-repeat: repeat; 
-  background-size: auto;
+  background-size: 50%;
 }
 
 button, select {
