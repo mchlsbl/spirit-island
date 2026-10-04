@@ -266,15 +266,15 @@ const PHASE_STEPS = {
 };
 
 const ADVERSARIES = [
-  { id: null, pl: "Brak", en: "None", image: null },
-  { id: "prussia", pl: "Królestwo Prus", en: "Kingdom of Prussia", image: "prussia" },
-  { id: "britain", pl: "Królestwo Wielkiej Brytanii", en: "Kingdom of Great Britain", image: "england" }, // Pliki: england_pl.png / england_eng.png
-  { id: "sweden", pl: "Królestwo Szwecji", en: "Kingdom of Sweden", image: "sweden" },
-  { id: "france", pl: "Królestwo Francji", en: "Kingdom of France", image: "france" },
-  { id: "habsburg", pl: "Monarchia Habsburgów", en: "Habsburg Monarchy", image: "habsburg" },
-  { id: "russia", pl: "Carstwo Rosyjskie", en: "Tsardom of Russia", image: "russia" },
-  { id: "scotland", pl: "Szkocja", en: "Kingdom of Scotland", image: "scotland" },
-  { id: "habsburg_mining", pl: "Monarchia Habsburgów (Górnictwo)", en: "Habsburg Mining Expedition", image: "hme" }
+  { id: null, pl: "Brak", en: "None", image_en: null, image_pl: null },
+  { id: "brandenburg_prussia", pl: "Brandenburgia-Prusy", en: "Brandenburg-Prussia", image_en: "./images/adversaries/prussia_en.png", image_pl: "./images/adversaries/prussia_pl.png" },
+  { id: "england", pl: "Anglia", en: "England", image_en: "./images/adversaries/england_en.png", image_pl: "./images/adversaries/england_pl.png" },
+  { id: "sweden", pl: "Szwecja", en: "Sweden", image_en: "./images/adversaries/sweden_en.png", image_pl: "./images/adversaries/sweden_pl.png" },
+  { id: "france", pl: "Francja", en: "France (Plantation Colony)", image_en: "./images/adversaries/france_en.png", image_pl: "./images/adversaries/france_pl.png" },
+  { id: "habsburg_monarchy", pl: "Monarchia Habsburgów", en: "Habsburg Monarchy (Livestock Colony)", image_en: "./images/adversaries/habsburg_en.png", image_pl: "./images/adversaries/habsburg_pl.png" },
+  { id: "russia", pl: "Rosja", en: "Russia", image_en: "./images/adversaries/russia_en.png", image_pl: "./images/adversaries/russia_pl.png" },
+  { id: "scotland", pl: "Szkocja", en: "Scotland", image_en: "./images/adversaries/scotland_en.png", image_pl: "./images/adversaries/scotland_pl.png" },
+  { id: "habsburg_mining_expedition", pl: "Habsburska Ekspedycja Górnicza", en: "Habsburg Mining Expedition", image_en: "./images/adversaries/hme_en.png", image_pl: "./images/adversaries/hme_pl.png" }
 ];
 
 const I18N = {
@@ -358,11 +358,11 @@ function formatAdversary(g) {
     const noneAdv = ADVERSARIES.find(a => a.id === null);
     return lang === "pl" ? noneAdv.pl : noneAdv.en;
   }
-
+  
   // Szukamy adwersarza w tablicy ADVERSARIES
   const match = ADVERSARIES.find(a => a.id === adv.id);
   const name = match ? (lang === "pl" ? match.pl : match.en) : adv.id;
-  
+
   // Formatowanie poziomu trudności (jeśli występuje)
   const levelText = lang === "pl" ? "Poziom" : "Level";
   const level = adv.level !== undefined && adv.level !== null ? ` / ${levelText} ${adv.level}` : "";
@@ -498,63 +498,20 @@ function renderFear(g) {
 
 /* Renderowanie adwersarza i opcjonalnej grafiki planszy */
 function renderAdversary(g) {
-  const selectEl = $("adversarySelect");
-  const levelEl = $("adversaryLevel");
-  const previewEl = $("adversaryPreview") \vert{}\vert{} $("playAdversaryPreview"); // podgląd w setup lub play
-
-  // Jeśli jesteśmy na ekranie setupu (elementy wyboru istnieją)
-  if (selectEl && levelEl) {
-    selectEl.innerHTML = ADVERSARIES.map(a => `<option value="${a.id ?? ""}">${a[lang]}</option>`).join("");
-    selectEl.value = g.adversary?.id ?? "";
-    
-    // Poziomy 0 do 6
-    levelEl.innerHTML = Array.from({length: 7}, (_, i) => `<option value="${i}">${i}</option>`).join("");
-    levelEl.value = String(g.adversary?.level ?? 0);
-  }
+  $("adversaryTitle").textContent = formatAdversary(g);
+  const boardImgContainer = $("adversaryBoard");
   
-  const a = ADVERSARIES.find(x => x.id === g.adversary?.id) || ADVERSARIES[0];
+  const adv = g.adversary;
+  const match = ADVERSARIES.find(a => a.id === adv?.id);
+  const imageSrc = match ? (lang === "pl" ? match.image_pl : match.image_en) : null;
 
-  // Renderowanie podglądu (działa na obu ekranach, jeśli istnieje kontener podglądu)
-  if (previewEl) {
-    const headerText = a.id 
-      ? `${a[lang]} · ${lang === "pl" ? "Poziom" : "Level"} ${g.adversary?.level ?? 0}` 
-      : (typeof t === "function" ? t("setup.adversary.noDescription") : "Brak adwersarza");
-
-    const langSuffix = lang === "pl" ? "pl" : "eng";
-    const imagePath = a.image ? `./images/adversaries/${a.image}_${langSuffix}.png` : null;
-
-    const imageHtml = imagePath 
-      ? `<div class="adversary-card-preview">
-           <img src="${imagePath}" alt="${a[lang]}" class="adversary-image" onerror="this.style.display='none'" />
-         </div>`
-      : '';
-
-    previewEl.innerHTML = `
-      <p class="adversary-description">${headerText}</p>
-      ${imageHtml}
-    `;
+  if (imageSrc) {
+    boardImgContainer.innerHTML = `<img src="${imageSrc}" alt="${match[lang]}" class="adversary-card-img" onerror="this.style.display='none'">`;
+    boardImgContainer.classList.remove("hidden");
+  } else {
+    boardImgContainer.innerHTML = "";
+    boardImgContainer.classList.add("hidden");
   }
-}
-  
-  // Nagłówek (nazwa + poziom)
-  const headerText = a.id 
-    ? `${a[lang]} · ${lang === "pl" ? "Poziom" : "Level"} ${g.adversary?.level ?? 0}` 
-    : t("setup.adversary.noDescription");
-
-  // Dynamiczny wybór pliku na podstawie języka (_pl lub _eng)
-  const langSuffix = lang === "pl" ? "pl" : "eng";
-  const imagePath = a.image ? `./images/adversaries/${a.image}_${langSuffix}.png` : null;
-
-  const imageHtml = imagePath 
-    ? `<div class="adversary-card-preview">
-         <img src="${imagePath}" alt="${a[lang]}" class="adversary-image" onerror="this.style.display='none'" />
-       </div>`
-    : '';
-
-  $("adversaryPreview").innerHTML = `
-    <p class="adversary-description">${headerText}</p>
-    ${imageHtml}
-  `;
 }
 
 /* Renderowanie statusu wszystkich graczy */
@@ -569,14 +526,12 @@ function renderPlayersStatus(g) {
     const isMe = i === selectedPlayer;
     const isReady = !!p.ready;
     
-    // Główny tekst to teraz nazwa ducha
+   // Główny tekst to teraz nazwa ducha
     const mainTitle = p.spirit_id ? spiritName(p.spirit_id) : (lang === "pl" ? "Brak wybranego ducha" : "No spirit chosen");
-    const playerSubtext = `${lang === "pl" ? "Gracz" : "Player"} ${i}`;
 
     html += `
       <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border);">
         <div>
-          <!-- Zastosowanie bardzo grubego fontu (900) dla aktualnego gracza -->
           <div style="${isMe ? "font-weight: 900; color: var(--primary, #000000);" : "font-weight: 500;"}">
             ${mainTitle} ${isMe ? ` <small style=" opacity: 0.5;">(${lang === "pl" ? "Ty" : "You"})</small>` : ""}
           </div>
@@ -606,17 +561,15 @@ function render(g) {
 
   const p = g.players?.[String(selectedPlayer)] || {};
   const phase = PHASES[g.phase_index] || "spirit";
-
+  
   // Nazwa ducha
   $("spiritName").textContent = spiritName(selectedSpirit);
-
+  
   // Box adwersarza
   renderAdversary(g);
-
   // Status wszystkich graczy
   renderPlayersStatus(g);
 
-  // Faza
   $("phaseTitle").textContent = phaseName(phase);
   renderPhaseSteps(phase);
   const ready = !!p.ready;
@@ -626,7 +579,6 @@ function render(g) {
   $("readyButton").textContent = ready ? t("play.readyState") : t("play.ready");
   $("readyButton").disabled = g.game_status !== "active" || !readyEligible || ready;
 
-  // Przycisk "Advance Phase" – tylko dla uprawnionych
   const canAdvance = !!p.permissions?.can_advance_phase;
   const advanceBtn = $("advanceButton");
   if (canAdvance) {
@@ -648,8 +600,6 @@ async function chooseSpirit(id) {
       const s = await tx.get(gameRef);
       if (!s.exists()) throw Error("Game does not exist.");
       const g = s.data();
-      // JEDNAK CHCĘ ZMIENIAĆ DUCHA W TRAKCIE GRY:
-      //if (g.game_status !== "setup") throw Error("Spirit can only be selected during setup.");
       const players = structuredClone(g.players);
       players[String(selectedPlayer)].spirit_id = id;
       tx.update(gameRef, { players });
@@ -796,7 +746,7 @@ async function resetElements() {
       const p = players[String(selectedPlayer)];
       if (!p) throw Error("Player not found.");
       
-      p.elements = emptyElements(); // Zresetowanie wszystkich żywiołów do 0
+      p.elements = emptyElements();
       tx.update(gameRef, { players });
     });
   } catch (e) {
@@ -848,7 +798,7 @@ $("fearControls").addEventListener("click", e => {
   if (b) changeFear(Number(b.dataset.fear));
 });
 
-const resetElementsBtn = $("resetElementsButton"); // Upewnij się, że ID w HTML odpowiada temu w JS
+const resetElementsBtn = $("resetElementsButton");
 if (resetElementsBtn) {
   resetElementsBtn.addEventListener("click", resetElements);
 }
