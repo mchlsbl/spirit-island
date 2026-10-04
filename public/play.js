@@ -498,14 +498,43 @@ function renderFear(g) {
 
 /* Renderowanie adwersarza i opcjonalnej grafiki planszy */
 function renderAdversary(g) {
-  $("adversarySelect").innerHTML = ADVERSARIES.map(a => `<option value="${a.id ?? ""}">${a[lang]}</option>`).join("");
-  $("adversarySelect").value = g.adversary?.id ?? "";
-  
-  // Poziomy 0 do 6
-  $("adversaryLevel").innerHTML = Array.from({length: 7}, (_, i) => `<option value="${i}">${i}</option>`).join("");
-  $("adversaryLevel").value = String(g.adversary?.level ?? 0);
+  const selectEl = $("adversarySelect");
+  const levelEl = $("adversaryLevel");
+  const previewEl = $("adversaryPreview") \vert{}\vert{} $("playAdversaryPreview"); // podgląd w setup lub play
+
+  // Jeśli jesteśmy na ekranie setupu (elementy wyboru istnieją)
+  if (selectEl && levelEl) {
+    selectEl.innerHTML = ADVERSARIES.map(a => `<option value="${a.id ?? ""}">${a[lang]}</option>`).join("");
+    selectEl.value = g.adversary?.id ?? "";
+    
+    // Poziomy 0 do 6
+    levelEl.innerHTML = Array.from({length: 7}, (_, i) => `<option value="${i}">${i}</option>`).join("");
+    levelEl.value = String(g.adversary?.level ?? 0);
+  }
   
   const a = ADVERSARIES.find(x => x.id === g.adversary?.id) || ADVERSARIES[0];
+
+  // Renderowanie podglądu (działa na obu ekranach, jeśli istnieje kontener podglądu)
+  if (previewEl) {
+    const headerText = a.id 
+      ? `${a[lang]} · ${lang === "pl" ? "Poziom" : "Level"} ${g.adversary?.level ?? 0}` 
+      : (typeof t === "function" ? t("setup.adversary.noDescription") : "Brak adwersarza");
+
+    const langSuffix = lang === "pl" ? "pl" : "eng";
+    const imagePath = a.image ? `./images/adversaries/${a.image}_${langSuffix}.png` : null;
+
+    const imageHtml = imagePath 
+      ? `<div class="adversary-card-preview">
+           <img src="${imagePath}" alt="${a[lang]}" class="adversary-image" onerror="this.style.display='none'" />
+         </div>`
+      : '';
+
+    previewEl.innerHTML = `
+      <p class="adversary-description">${headerText}</p>
+      ${imageHtml}
+    `;
+  }
+}
   
   // Nagłówek (nazwa + poziom)
   const headerText = a.id 
