@@ -201,7 +201,7 @@ async function saveSetupConfig() {
   await updateDoc(gameRef, {
     players,
     elements_tracker_enabled: $("elementsTracker").checked,
-    adversary:{id:adversary.id,level,card_text:adversary.cardText||null}
+    adversary:{id:adversary.id,level}
   });
 }
 
