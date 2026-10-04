@@ -17,7 +17,6 @@
 * { box-sizing: border-box; }
 
 html, body {
-  /* Zapewnia, że strona ma co najmniej 100% wysokości okna przeglądarki */
   min-height: 100vh;
   margin: 0;
   padding: 0;
