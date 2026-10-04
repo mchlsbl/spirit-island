@@ -265,14 +265,17 @@ const PHASE_STEPS = {
   time_passes: { pl: ["Odrzuć zagrane karty Mocy", "Odnów zużyte karty", "Przesuń się do następnej tury"], en: ["Discard played Power Cards", "Recover spent cards", "Move to the next turn"] }
 };
 
-const ADVERSARIES = [{ id: null, pl: "Brak", en: "None", cardText: "" },
-                     { id: "brandenburg_prussia", pl: "Brandenburgia-Prusy", en: "Brandenburg-Prussia" },
-                     { id: "england", pl: "Anglia", en: "England" }, { id: "sweden", pl: "Szwecja", en: "Sweden" },
-                     { id: "france", pl: "Francja", en: "France (Plantation Colony)" },
-                     { id: "habsburg_monarchy", pl: "Monarchia Habsburgów", en: "Habsburg Monarchy (Livestock Colony)" },
-                     { id: "russia", pl: "Rosja", en: "Russia" }, { id: "scotland", pl: "Szkocja", en: "Scotland" },
-                     { id: "habsburg_mining_expedition", pl: "Habsburska Ekspedycja Górnicza", en: "Habsburg Mining Expedition" }
-                    ];
+const ADVERSARIES = [
+  { id: null, pl: "Brak", en: "None", image: null },
+  { id: "prussia", pl: "Królestwo Prus", en: "Kingdom of Prussia", image: "prussia" },
+  { id: "britain", pl: "Królestwo Wielkiej Brytanii", en: "Kingdom of Great Britain", image: "england" }, // Pliki: england_pl.png / england_eng.png
+  { id: "sweden", pl: "Królestwo Szwecji", en: "Kingdom of Sweden", image: "sweden" },
+  { id: "france", pl: "Królestwo Francji", en: "Kingdom of France", image: "france" },
+  { id: "habsburg", pl: "Monarchia Habsburgów", en: "Habsburg Monarchy", image: "habsburg" },
+  { id: "russia", pl: "Carstwo Rosyjskie", en: "Tsardom of Russia", image: "russia" },
+  { id: "scotland", pl: "Szkocja", en: "Kingdom of Scotland", image: "scotland" },
+  { id: "habsburg_mining", pl: "Monarchia Habsburgów (Górnictwo)", en: "Habsburg Mining Expedition", image: "hme" }
+];
 
 const I18N = {
   pl: {
@@ -495,15 +498,34 @@ function renderFear(g) {
 
 /* Renderowanie adwersarza i opcjonalnej grafiki planszy */
 function renderAdversary(g) {
-  $("adversaryTitle").textContent = formatAdversary(g);
-  const boardImgContainer = $("adversaryBoard");
-  if (g.adversary?.board_img) {
-    boardImgContainer.innerHTML = `<img src="${g.adversary.board_img}" alt="Adversary Board">`;
-    boardImgContainer.classList.remove("hidden");
-  } else {
-    boardImgContainer.innerHTML = "";
-    boardImgContainer.classList.add("hidden");
-  }
+  $("adversarySelect").innerHTML = ADVERSARIES.map(a => `<option value="${a.id ?? ""}">${a[lang]}</option>`).join("");
+  $("adversarySelect").value = g.adversary?.id ?? "";
+  
+  // Poziomy 0 do 6
+  $("adversaryLevel").innerHTML = Array.from({length: 7}, (_, i) => `<option value="${i}">${i}</option>`).join("");
+  $("adversaryLevel").value = String(g.adversary?.level ?? 0);
+  
+  const a = ADVERSARIES.find(x => x.id === g.adversary?.id) || ADVERSARIES[0];
+  
+  // Nagłówek (nazwa + poziom)
+  const headerText = a.id 
+    ? `${a[lang]} · ${lang === "pl" ? "Poziom" : "Level"} ${g.adversary?.level ?? 0}` 
+    : t("setup.adversary.noDescription");
+
+  // Dynamiczny wybór pliku na podstawie języka (_pl lub _eng)
+  const langSuffix = lang === "pl" ? "pl" : "eng";
+  const imagePath = a.image ? `./images/adversaries/${a.image}_${langSuffix}.png` : null;
+
+  const imageHtml = imagePath 
+    ? `<div class="adversary-card-preview">
+         <img src="${imagePath}" alt="${a[lang]}" class="adversary-image" onerror="this.style.display='none'" />
+       </div>`
+    : '';
+
+  $("adversaryPreview").innerHTML = `
+    <p class="adversary-description">${headerText}</p>
+    ${imageHtml}
+  `;
 }
 
 /* Renderowanie statusu wszystkich graczy */
