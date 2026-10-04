@@ -66,6 +66,7 @@ const SPIRITS = [
   { id: "wounded_waters_bleeding", pl: "Zranione Wody Krwawią", en: "Wounded Waters Bleeding" },
   { id: "dances_up_earthquakes", pl: "Tańczy na Trzęsieniach Ziemi", en: "Dances Up Earthquakes" }
 ];
+
 const ADVERSARIES = [
   { id: null, pl: "Brak", en: "None" },
   { id: "prussia", pl: "Królestwo Prus", en: "Kingdom of Prussia" },
@@ -89,8 +90,8 @@ const I18N = {
     "setup.players.noSpirit": "— wybierz ducha —",
     "setup.global.title": "Tracker żywiołów",
     "setup.global.elements": "Status trackera",
-    "setup.adversary.title": "Przeciwnik",
-    "setup.adversary.name": "Przeciwnik",
+    "setup.adversary.title": "Adwersarz",
+    "setup.adversary.name": "Adwersarz",
     "setup.adversary.level": "Poziom",
     "setup.fear.title": "Strach",
     "setup.fear.total": "Wygenerowano",
@@ -104,7 +105,7 @@ const I18N = {
     "stats.fast": "Szybkie",
     "stats.invader": "Najeźdźcy",
     "stats.slow": "Wolne",
-    "stats.time_passes": "Przemijanie",
+    "stats.time_passes": "Czas płynie",
     "stats.game": "Cała gra",
     "history.title": "Historia faz",
     "history.description": "Zapisane czasy zakończonych faz.",
@@ -119,18 +120,18 @@ const I18N = {
     "common.enabled": "Włączony",
     "common.disabled": "Wyłączony",
     "phase.setup": "Konfiguracja gry",
-    "phase.spirit": "Faza Duchów",
+    "phase.spirit": "Faza Ducha",
     "phase.fast": "Szybkie Moce",
     "phase.invader": "Faza Najeźdźcy",
     "phase.slow": "Wolne Moce",
-    "phase.time_passes": "Przemijanie",
-    "status.setup": "PRZYGOTOWANIE",
-    "status.active": "AKTYWNA",
-    "status.finished": "ZAKOŃCZONA",
-    "button.start": "ROZPOCZNIJ GRĘ",
-    "button.advance": "NASTĘPNA FAZA",
-    "button.finish": "ZAKOŃCZ GRĘ",
-    "button.reset": "ZRESETUJ ROZGRYWKĘ",
+    "phase.time_passes": "Czas Płynie",
+    "status.setup": "SETUP",
+    "status.active": "ACTIVE",
+    "status.finished": "FINISHED",
+    "button.start": "START GAME",
+    "button.advance": "ADVANCE PHASE",
+    "button.finish": "END GAME / STOP TIMERS",
+    "button.reset": "RESET GAME",
     "permission.fear": "Zmiana strachu",
     "permission.advance": "Zmiana fazy",
     "setup.ready": "Ustaw graczy i parametry, a następnie uruchom grę.",
@@ -138,7 +139,7 @@ const I18N = {
     "setup.finished": "Gra zakończona — statystyki są zamrożone.",
     "confirm.start": "Uruchomić grę? Zostanie rozpoczęta tura 1 i pierwsza faza.",
     "confirm.finish": "Zakończyć grę i zatrzymać wszystkie timery?",
-    "confirm.reset": "Na pewno zresetować całą rozgrywkę? Tej operacji nie można cofnąć."
+    "confirm.reset": "Na pewno zresetować całą grę? Tej operacji nie można cofnąć."
   },
   en: {
     "app.eyebrow": "HOST / ADMIN",
@@ -263,7 +264,7 @@ async function saveSetupConfig() {
   const level = adversary.id ? Number($("adversaryLevel").value) : 0;
   await updateDoc(gameRef, {
     players,
-    elements_tracker_enabled: $("elementsTrackerSelect").value === "true",
+    elements_tracker_enabled: $("elementsTracker").value === "true",
     adversary: { id: adversary.id, level }
   });
 }
@@ -337,7 +338,7 @@ function renderStatus(g) {
   $("finishGameButton").disabled = g.game_status !== "active";
   const editable = g.game_status === "setup";
   $("playerCount").disabled = !editable;
-  $("elementsTrackerSelect").disabled = !editable;
+  $("elementsTracker").disabled = !editable;
   $("adversarySelect").disabled = !editable;
   $("adversaryLevel").disabled = !editable || !g.adversary?.id;
   
@@ -403,7 +404,7 @@ function render(g) {
   renderFear(g);
   renderStats(g);
   renderHistory(g);
-  $("elementsTrackerSelect").value = String(!!g.elements_tracker_enabled);
+  $("elementsTracker").value = String(!!g.elements_tracker_enabled);
 }
 
 function showConfirmDialog(titleKey, textKey) {
@@ -437,7 +438,7 @@ function initEvents() {
   $("playersContainer").addEventListener("change", saveSetupConfig);
   $("adversarySelect").addEventListener("change", saveSetupConfig);
   $("adversaryLevel").addEventListener("change", saveSetupConfig);
-  $("elementsTrackerSelect").addEventListener("change", saveSetupConfig);
+  $("elementsTracker").addEventListener("change", saveSetupConfig);
 
   $("startGameButton").addEventListener("click", async () => {
     if (await showConfirmDialog("button.start", "confirm.start")) {
