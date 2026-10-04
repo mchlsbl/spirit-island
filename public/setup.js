@@ -17,51 +17,53 @@ export const PHASES = ["spirit", "fast", "invader", "slow", "time_passes"];
 
 const SPIRITS = [
   // Core Set
-  { id: "river_surges_in_sunlight", pl: "Skąpana Słońcem Rzeka", en: "River Surges in Sunlight" },
+ { id: "river_surges_in_sunlight", pl: "Skąpana Słońcem Rzeka", en: "River Surges in Sunlight" },
   { id: "lightnings_swift_strike", pl: "Błyskawica z Serca Burzy", en: "Lightning's Swift Strike" },
-  { id: "shadows_flicker_like_flame", pl: "Cień Migoczący Niczym Płomień", en: "Shadows Flicker Like Flame" },
-  { id: "vital_strength_of_the_earth", pl: "Kolosalna Siła Ziemi", en: "Vital Strength of the Earth" },
-  { id: "ocean_hungry_grasp", pl: "Zryw Wygłodnialego Oceanu", en: "Ocean's Hungry Grasp" },
-  { id: "a_spread_of_rampant_green", pl: "Nieokiełznany Siewca Zieleni", en: "A Spread of Rampant Green" },
-  { id: "thunderspeaker", pl: "Głos Burzy", en: "Thunderspeaker" },
   { id: "bringer_of_dreams_and_nightmares", pl: "Zsyłający Sny i Koszmary", en: "Bringer of Dreams and Nightmares" },
+  { id: "vital_strength_of_the_earth", pl: "Kolosalna Siła Ziemi", en: "Vital Strength of the Earth" },
+  { id: "thunderspeaker", pl: "Głos Burzy", en: "Thunderspeaker" },
+  { id: "shadows_flicker_like_flame", pl: "Cień Migoczący Niczym Płomień", en: "Shadows Flicker Like Flame" },
+  { id: "ocean_hungry_grasp", pl: "Zryw Wygłodnialego Oceanu", en: "Ocean's Hungry Grasp" },
+  { id: "a_spreading_heart_of_green", pl: "Nieokiełznany Siewca Zieleni", en: "A Spread of Rampant Green" },
   
   // Branch & Claw
-  { id: "sharp_fangs_behind_the_leaves", pl: "Ostre Kły Ukryte w Liściach", en: "Sharp Fangs Behind the Leaves" },
-  { id: "keeper_of_the_forbidden_wilds", pl: "Strażnik Zakazanej Głuszy", en: "Keeper of the Forbidden Wilds" },
+  { id: "keeper_of_the_forbidden_wilds", pl: "Strażnik Zakazanej Dziczy", en: "Keeper of the Forbidden Wilds" },
+  { id: "sharp_fangs_behind_the_leaves", pl: "Ostre Kły Za Liśćmi", en: "Sharp Fangs Behind the Leaves" },
   
   // Jagged Earth
-  { id: "stone_unyielding_defiance", pl: "Niewzruszony Opór Skały", en: "Stone's Unyielding Defiance" },
+  { id: "grinning_trickster_stirs_up_trouble", pl: "Uśmiechnięty Psotnik Wywołuje Kłopoty", en: "Grinning Trickster Stirs Up Trouble" },
+  { id: "lure_of_the_deep_wilderness", pl: "Wabik Głębokiej Dziczy", en: "Lure of the Deep Wilderness" },
+  { id: "many_minds_move_as_one", pl: "Wiele Umysłów Porusza się jak Jeden", en: "Many Minds Move as One" },
   { id: "shifting_memory_of_ages", pl: "Zmienna Pamięć Wieków", en: "Shifting Memory of Ages" },
-  { id: "grinning_trickster_stirs_up_trouble", pl: "Uśmiechnięty Psotnik Mąci Wodę", en: "Grinning Trickster Stirs Up Trouble" },
-  { id: "locus_serpent", pl: "Wąż Drzemiący pod Ziemią", en: "Serpent Slumbering Beneath the Island" },
-  { id: "lure_of_the_deep_wilderness", pl: "Zew Głębokiej Głuszy", en: "Lure of the Deep Wilderness" },
-  { id: "many_minds_move_as_one", pl: "Mrowie Myśli Mówi Jednym Głosem", en: "Many Minds Move as One" },
-  { id: "volcano_looming_high", pl: "Wulkan Majaczący w Oddali", en: "Volcano Looming High" },
-  { id: "shroud_of_silent_mist", pl: "Całun Milczącej Mgły", en: "Shroud of Silent Mist" },
-  { id: "vengeance_as_a_burning_plague", pl: "Zemsta niczym Płonąca Zaraza", en: "Vengeance as a Burning Plague" },
-  { id: "starlight_seeks_its_form", pl: "Światło Gwiazd Szukające Kształtu", en: "Starlight Seeks Its Form" },
+  { id: "stones_unyielding_defiance", pl: "Niezłomny Opór Kamienia", en: "Stone's Unyielding Defiance" },
+  { id: "volcano_looming_high", pl: "Wyniosły Wulkan", en: "Volcano Looming High" },
+  { id: "shroud_of_silent_mist", pl: "Całun Cichej Mgły", en: "Shroud of Silent Mist" },
+  { id: "vengeance_as_a_burning_plague", pl: "Zemsta jako Płonąca Plaga", en: "Vengeance as a Burning Plague" },
+  { id: "fractured_days_split_the_sky", pl: "Rozbite Dni Rozdzierają Niebo", en: "Fractured Days Split the Sky" },
+  { id: "starlight_seeks_its_form", pl: "Światło Gwiazd Szuka Swojej Formy", en: "Starlight Seeks Its Form" },
   
   // Promo / Feather & Flame
-  { id: "heart_of_the_wildfire", pl: "Serce Dzikiego Ognia", en: "Heart of the Wildfire" },
-  { id: "finder_of_paths_unseen", pl: "Odkrywca Nieprzetartych Ścieżek", en: "Finder of Paths Unseen" },
-
+  { id: "heart_of_the_wildfire", pl: "Serce Pożogi", en: "Heart of the Wildfire" },
+  { id: "serpent_slumbering_beneath_the_island", pl: "Wąż Śpiący Pod Wyspą", en: "Serpent Slumbering Beneath the Island" },
+  { id: "downpour_drenches_the_world", pl: "Ulewa Zalewająca Świat", en: "Downpour Drenches the World" },
+  { id: "finder_of_paths_unseen", pl: "Odkrywca Niewidocznych Ścieżek", en: "Finder of Paths Unseen" },
+  
   // Horizons of Spirit Island
-  { id: "devouring_teeth_lurk_underfoot", pl: "Pożerające Zęby pod Stopami", en: "Devouring Teeth Lurk Underfoot" },
-  { id: "eyes_watch_from_the_trees", pl: "Oczy Patrzące z Drzew", en: "Eyes Watch From the Trees" },
-  { id: "fathomless_mud_of_the_swamp", pl: "Bezdenne Błoto Moczarów", en: "Fathomless Mud of the Swamp" },
-  { id: "rising_heat_of_stone_and_sand", pl: "Narastający Żar Kamienia i Piasku", en: "Rising Heat of Stone and Sand" },
-  { id: "sun_bright_whirlwind", pl: "Słoneczny Wir", en: "Sun-Bright Whirlwind" },
+  { id: "devouring_teeth_lurk_underfoot", pl: "Pożerające Zęby Czają się Pod Stopami", en: "Devouring Teeth Lurk Underfoot" },
+  { id: "eyes_watch_from_the_trees", pl: "Oczy Obserwujące z Drzew", en: "Eyes Watch from the Trees" },
+  { id: "fathomless_mud_of_the_swamp", pl: "Bezdenne Błoto Bagna", en: "Fathomless Mud of the Swamp" },
+  { id: "rising_heat_of_stone_and_sand", pl: "Wzrastający Żar Kamienia i Piasku", en: "Rising Heat of Stone and Sand" },
+  { id: "sun_bright_whirlwind", pl: "Słoneczny Wicher", en: "Sun-Bright Whirlwind" },
 
   // Nature Incarnate
-  { id: "ember_eager_roots", pl: "Korzenie Żądne Żaru", en: "Ember-Eager Roots" },
-  { id: "hearth_vigil", pl: "Czuwanie przy Ognisku", en: "Hearth-Vigil" },
-  { id: "relentless_gaze_of_the_sun", pl: "Nieubłagane Spojrzenie Słońca", en: "Relentless Gaze of the Sun" },
-  { id: "towering_roots_of_the_jungle", pl: "Czołowe Korzenie Dżungli", en: "Towering Roots of the Jungle" },
-  { id: "breath_of_darkness_down_your_neck", pl: "Oddech Ciemności na Szyi", en: "Breath of Darkness Down Your Neck" },
-  { id: "dances_up_earthquakes", pl: "Taniec Wywołujący Trzęsienia Ziemi", en: "Dances Up Earthquakes" },
-  { id: "wandering_voice_keens_delirium", pl: "Wędrowny Głos Zawodzi w Majakach", en: "Wandering Voice Keens Delirium" },
-  { id: "wounded_waters_bleeding", pl: "Ranne Wody Krwawiące", en: "Wounded Waters Bleeding" }
+  { id: "ember_eyed_behemoth", pl: "Behemot o Oczach Żaru", en: "Ember-Eyed Behemoth" },
+  { id: "hearth_vigil", pl: "Czuwanie Domowego Ogniska", en: "Hearth-Vigil" },
+  { id: "towering_roots_of_the_jungle", pl: "Strzeliste Korzenie Dżungli", en: "Towering Roots of the Jungle" },
+  { id: "breath_of_darkness_down_your_spine", pl: "Oddech Ciemności Wzdłuż Kręgosłupa", en: "Breath of Darkness Down Your Spine" },
+  { id: "relentless_gaze_of_the_sun", pl: "Nieustępliwe Spojrzenie Słońca", en: "Relentless Gaze of the Sun" },
+  { id: "wandering_voice_keens_delirium", pl: "Błądzący Głos Wyje Obłęd", en: "Wandering Voice Keens Delirium" },
+  { id: "wounded_waters_bleeding", pl: "Zranione Wody Krwawią", en: "Wounded Waters Bleeding" },
+  { id: "dances_up_earthquakes", pl: "Tańczy na Trzęsieniach Ziemi", en: "Dances Up Earthquakes" }
 ];
 
 const ADVERSARIES = [
