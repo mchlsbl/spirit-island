@@ -3,14 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Spirit Island Companion — Setup</title>
+  <title>Spirit Island Helper — Setup</title>
   <link rel="stylesheet" href="./setup.css">
 </head>
 <body>
   <header class="topbar">
     <div>
-      <p class="eyebrow" data-i18n="app.eyebrow">HOST / ADMIN</p>
-      <h1 data-i18n="app.title">Spirit Island Companion</h1>
+      <h1 data-i18n="app.title">SPIRIT ISLAND HELPER - SETUP</h1>
     </div>
     <div class="topbar-actions">
       <span id="connectionBadge" class="badge badge-muted" data-i18n="status.connecting">Łączenie…</span>
@@ -40,7 +39,6 @@
         <div class="card-header">
           <div>
             <h3 data-i18n="setup.players.title">Gracze</h3>
-            <p class="muted" data-i18n="setup.players.description">Liczba graczy, duchy i uprawnienia.</p>
           </div>
           <label class="field compact-field">
             <span data-i18n="setup.players.count">Liczba graczy</span>
@@ -54,29 +52,29 @@
         <article class="card">
           <div class="card-header">
             <div>
-              <h3 data-i18n="setup.global.title">Ustawienia globalne</h3>
-              <p class="muted" data-i18n="setup.global.description">Opcje wspólne dla całej gry.</p>
+              <h3 data-i18n="setup.global.title">Tracker żywiołów</h3>
             </div>
           </div>
-          <label class="switch-row">
-            <span>
-              <strong data-i18n="setup.global.elements">Tracker żywiołów</strong>
-              <small data-i18n="setup.global.elementsHint">Pozwala graczom śledzić własne żywioły.</small>
-            </span>
-            <input id="elementsTracker" type="checkbox">
-          </label>
+          <div class="form-grid">
+            <label class="field">
+              <span data-i18n="setup.global.elements">Status trackera</span>
+              <select id="elementsTrackerSelect">
+                <option value="true" data-i18n="common.enabled">Włączony</option>
+                <option value="false" data-i18n="common.disabled">Wyłączony</option>
+              </select>
+            </label>
+          </div>
         </article>
 
         <article class="card">
           <div class="card-header">
             <div>
-              <h3 data-i18n="setup.adversary.title">Adwersarz</h3>
-              <p class="muted" data-i18n="setup.adversary.description">Wybierz adwersarza i poziom.</p>
+              <h3 data-i18n="setup.adversary.title">Przeciwnik</h3>
             </div>
           </div>
           <div class="form-grid">
             <label class="field">
-              <span data-i18n="setup.adversary.name">Adwersarz</span>
+              <span data-i18n="setup.adversary.name">Przeciwnik</span>
               <select id="adversarySelect"></select>
             </label>
             <label class="field">
@@ -84,14 +82,12 @@
               <select id="adversaryLevel"></select>
             </label>
           </div>
-          <div id="adversaryPreview" class="info-box"></div>
         </article>
 
         <article class="card">
           <div class="card-header">
             <div>
               <h3 data-i18n="setup.fear.title">Strach</h3>
-              <p class="muted" data-i18n="setup.fear.description">Podgląd bieżącego poziomu strachu.</p>
             </div>
           </div>
           <div class="stat-grid">
@@ -99,7 +95,6 @@
             <div class="stat"><span data-i18n="setup.fear.cards">Zdobyte karty</span><strong id="fearCards">0</strong></div>
             <div class="stat"><span data-i18n="setup.fear.pool">Pula</span><strong id="fearPool">0 / 0</strong></div>
           </div>
-          <p class="tiny muted" data-i18n="setup.fear.note">Strach zmieniają uprawnieni gracze na ekranie gry.</p>
         </article>
       </aside>
     </section>
