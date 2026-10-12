@@ -80,34 +80,194 @@ const ADVERSARIES = [
 
 const I18N = {
   pl: {
-    "error.spiritRequired": "Wszyscy gracze muszą wybrać ducha przed rozpoczęciem gry!",
-    "app.eyebrow":"HOST / ADMIN", "app.title":"Spirit Island Companion", "status.connecting":"Łączenie…", "status.connected":"Połączono", "status.error":"Błąd połączenia",
-    "setup.players.title":"Gracze", "setup.players.description":"Liczba graczy, duchy i uprawnienia.", "setup.players.count":"Liczba graczy", "setup.players.spirit":"Duch",
-    "setup.players.noSpirit":"— wybierz ducha —", "setup.players.fear":"Strach", "setup.players.phase":"Faza", "setup.global.title":"Ustawienia globalne", "setup.global.description":"Opcje wspólne dla całej gry.", "setup.global.elements":"Tracker żywiołów", "setup.global.elementsHint":"Pozwala graczom śledzić własne żywioły.",
-    "setup.adversary.primary":"Pierwszy przeciwnik", "setup.adversary.secondary":"Drugi przeciwnik", "setup.adversary.description":"Wybierz adwersarza i poziom.", "setup.adversary.name":"Przeciwnik", "setup.adversary.level":"Poziom", "setup.adversary.none":"Brak", "setup.adversary.noDescription":"Brak adwersarza.",
-    "setup.fear.title":"Strach", "setup.fear.description":"Podgląd bieżącego poziomu strachu.", "setup.fear.total":"Wygenerowano", "setup.fear.cards":"Zdobyte karty", "setup.fear.pool":"Pula", "setup.fear.note":"Strach zmieniają uprawnieni gracze na ekranie gry.",
-    "stats.title":"Statystyki czasu", "stats.description":"Czas jest zapisywany przy READY, zmianie fazy i zakończeniu gry.", "stats.currentPhase":"Aktualna faza", "stats.total":"Łącznie", "stats.spirit":"Duch", "stats.fast":"Szybkie", "stats.invader":"Najeźdźcy", "stats.slow":"Wolne", "stats.time_passes":"Czas płynie", "stats.game":"Cała gra",
-    "history.title":"Historia faz", "history.description":"Zapisane czasy zakończonych faz.", "history.empty":"Brak zakończonych faz.", "history.turn":"Tura", "history.phase":"Faza", "history.duration":"Czas", "history.finished":"koniec gry",
-    "reset.title":"Reset gry", "reset.description":"Kasuje bieżący stan, statystyki, strach, wybory duchów i historię.", "common.cancel":"Anuluj", "common.confirm":"Potwierdź",
-    "phase.spirit":"Faza Ducha", "phase.fast":"Szybkie Moce", "phase.invader":"Faza Najeźdźcy", "phase.slow":"Wolne Moce", "phase.time_passes":"Czas Płynie",
-    "status.setup":"SETUP", "status.active":"ACTIVE", "status.finished":"FINISHED", "button.start":"START GAME", "button.advance":"ADVANCE PHASE", "button.finish":"END GAME / STOP TIMERS", "button.reset":"RESET GAME",
-    "permission.fear":"Zmiana strachu", "permission.advance":"Zmiana fazy", "setup.locked":"Konfiguracja jest zablokowana po uruchomieniu gry.", "setup.ready":"Gotowe do uruchomienia.", "setup.active":"Gra trwa — konfiguracja jest zablokowana.", "setup.finished":"Gra zakończona — statystyki są zamrożone.",
-    "confirm.start":"Uruchomić grę? Zostanie rozpoczęta tura 1 i pierwsza faza.", "confirm.finish":"Zakończyć grę i zatrzymać wszystkie timery?", "confirm.reset":"Na pewno zresetować całą grę? Tej operacji nie można cofnąć.", "message.saved":"Zapisano konfigurację.", "message.started":"Gra została uruchomiona.", "message.finished":"Gra została zakończona.", "message.reset":"Gra została zresetowana."
+    "app.eyebrow": "HOST / ADMIN",
+    "app.title": "Spirit Island Companion",
+    "status.connecting": "Łączenie…",
+    "status.connected": "Połączono",
+    "status.error": "Błąd połączenia",
+    
+    "setup.players.title": "Gracze",
+    "setup.players.description": "Liczba graczy, duchy i uprawnienia.",
+    "setup.players.count": "Liczba graczy",
+    "setup.players.spirit": "Duch",
+    "setup.players.noSpirit": "—!— wybierz ducha —!—",
+    "setup.players.fear": "Strach",
+    "setup.players.phase": "Faza",
+    
+    "setup.global.title": "Ustawienia globalne",
+    "setup.global.description": "Opcje wspólne dla całej gry.",
+    "setup.global.elements": "Tracker żywiołów",
+    "setup.global.elementsHint": "Pozwala graczom śledzić własne żywioły.",
+    
+    "setup.adversary.primary": "Pierwszy przeciwnik",
+    "setup.adversary.secondary": "Drugi przeciwnik",
+    "setup.adversary.description": "Wybierz przeciwnika i poziom.",
+    "setup.adversary.name": "Przeciwnik",
+    "setup.adversary.level": "Poziom",
+    "setup.adversary.none": "Brak",
+    "setup.adversary.noDescription": "Brak adwersarza.",
+    
+    "setup.fear.title": "Strach",
+    "setup.fear.description": "Podgląd bieżącego poziomu strachu.",
+    "setup.fear.total": "Wygenerowano",
+    "setup.fear.cards": "Zdobyte karty",
+    "setup.fear.pool": "Pula",
+    "setup.fear.note": "Strach zmieniają uprawnieni gracze na ekranie gry.",
+    
+    "stats.title": "Statystyki czasu",
+    "stats.description": "Czas jest zapisywany przy READY, zmianie fazy i zakończeniu gry.",
+    "stats.currentPhase": "Aktualna faza",
+    "stats.total": "Łącznie",
+    "stats.spirit": "Duchów",
+    "stats.fast": "Pospieszne",
+    "stats.invader": "Najeźdźców",
+    "stats.slow": "Powolne",
+    "stats.time_passes": "Przemijanie",
+    "stats.game": "Cała gra",
+    
+    "history.title": "Historia faz",
+    "history.description": "Zapisane czasy zakończonych faz.",
+    "history.empty": "Brak zakończonych faz.",
+    "history.turn": "Tura",
+    "history.phase": "Faza",
+    "history.duration": "Czas",
+    "history.finished": "koniec gry",
+    
+    "reset.title": "Reset gry",
+    "reset.description": "Kasuje bieżący stan, statystyki, strach, wybory duchów i historię.",
+    
+    "common.cancel": "Anuluj",
+    "common.confirm": "Potwierdź",
+    
+    "phase.setup": "Przygotowywanie Gry",
+    "phase.spirit": "Faza Duchów",
+    "phase.fast": "Faza Pośpiesznych Mocy",
+    "phase.invader": "Faza Najeźdźców",
+    "phase.slow": "Faza Powolnych Mocy",
+    "phase.time_passes": "Przemijanie",
+    
+    "status.setup": "PRZYGOTOWANIE",
+    "status.active": "GRA AKTYWNA",
+    "status.finished": "GRA ZAKOŃCZONA",
+    
+    "button.start": "ROZPOCZNIJ GRĘ",
+    "button.advance": "NASTĘPNA FAZA",
+    "button.finish": "ZAKOŃCZ GRĘ",
+    "button.reset": "RESETUJ GRĘ",
+    
+    "permission.fear": "Zmiana strachu",
+    "permission.advance": "Zmiana fazy",
+    
+    "setup.locked": "Konfiguracja jest zablokowana po uruchomieniu gry.",
+    "setup.ready": "Gotowe do uruchomienia.",
+    "setup.active": "Gra trwa — konfiguracja jest zablokowana.",
+    "setup.finished": "Gra zakończona — statystyki są zamrożone.",
+    
+    "confirm.start": "Uruchomić grę? Zostanie rozpoczęta tura 1 i pierwsza faza.",
+    "confirm.finish": "Zakończyć grę i zatrzymać wszystkie timery?",
+    "confirm.reset": "Na pewno zresetować całą grę? Tej operacji nie można cofnąć.",
+    
+    "message.saved": "Zapisano konfigurację.",
+    "message.started": "Gra została uruchomiona.",
+    "message.finished": "Gra została zakończona.",
+    "message.reset": "Gra została zresetowana.",
+
+    "error.spiritRequired": "Wszyscy gracze muszą wybrać ducha przed rozpoczęciem gry!"
   },
   en: {
-    "error.spiritRequired": "All players must select a spirit before starting the game!",
-    "app.eyebrow":"HOST / ADMIN", "app.title":"Spirit Island Companion", "status.connecting":"Connecting…", "status.connected":"Connected", "status.error":"Connection error",
-    "setup.players.title":"Players", "setup.players.description":"Player count, spirits and permissions.", "setup.players.count":"Player count", "setup.players.spirit":"Spirit", "setup.players.noSpirit":"— select spirit —", "setup.players.fear":"Fear", "setup.players.phase":"Phase",
-    "setup.global.title":"Global settings", "setup.global.description":"Options shared by the whole game.", "setup.global.elements":"Elements tracker", "setup.global.elementsHint":"Lets players track their own elements.",
-    "setup.adversary.primary":"Primary Adversary", "setup.adversary.secondary":"Secondary Adversary", "setup.adversary.description":"Choose adversary and level.", "setup.adversary.name":"Adversary", "setup.adversary.level":"Level", "setup.adversary.none":"None", "setup.adversary.noDescription":"No adversary.",
-    "setup.fear.title":"Fear", "setup.fear.description":"Current fear progress.", "setup.fear.total":"Generated", "setup.fear.cards":"Cards earned", "setup.fear.pool":"Pool", "setup.fear.note":"Fear is changed by permitted players on the play screen.",
-    "stats.title":"Time statistics", "stats.description":"Time is recorded on READY, phase changes and game end.", "stats.currentPhase":"Current phase", "stats.total":"Total", "stats.spirit":"Spirit", "stats.fast":"Fast", "stats.invader":"Invader", "stats.slow":"Slow", "stats.time_passes":"Time Passes", "stats.game":"Whole game",
-    "history.title":"Phase history", "history.description":"Recorded durations of completed phases.", "history.empty":"No completed phases.", "history.turn":"Turn", "history.phase":"Phase", "history.duration":"Time", "history.finished":"game end",
-    "reset.title":"Reset game", "reset.description":"Clears current state, statistics, fear, spirit selections and history.", "common.cancel":"Cancel", "common.confirm":"Confirm",
-    "phase.spirit":"Spirit Phase", "phase.fast":"Fast Powers", "phase.invader":"Invader Phase", "phase.slow":"Slow Powers", "phase.time_passes":"Time Passes",
-    "status.setup":"SETUP", "status.active":"ACTIVE", "status.finished":"FINISHED", "button.start":"START GAME", "button.advance":"ADVANCE PHASE", "button.finish":"END GAME / STOP TIMERS", "button.reset":"RESET GAME",
-    "permission.fear":"Change fear", "permission.advance":"Advance phase", "setup.locked":"Configuration is locked after the game starts.", "setup.ready":"Ready to start.", "setup.active":"Game is running — configuration is locked.", "setup.finished":"Game finished — statistics are frozen.",
-    "confirm.start":"Start the game? Turn 1 and the first phase will begin.", "confirm.finish":"End the game and stop all timers?", "confirm.reset":"Reset the entire game? This cannot be undone.", "message.saved":"Configuration saved.", "message.started":"Game started.", "message.finished":"Game finished.", "message.reset":"Game reset."
+    "app.eyebrow": "HOST / ADMIN",
+    "app.title": "Spirit Island Companion",
+    "status.connecting": "Connecting…",
+    "status.connected": "Connected",
+    "status.error": "Connection error",
+    
+    "setup.players.title": "Players",
+    "setup.players.description": "Player count, spirits and permissions.",
+    "setup.players.count": "Player count",
+    "setup.players.spirit": "Spirit",
+    "setup.players.noSpirit": "— select spirit —",
+    "setup.players.fear": "Fear",
+    "setup.players.phase": "Phase",
+    
+    "setup.global.title": "Global settings",
+    "setup.global.description": "Options shared by the whole game.",
+    "setup.global.elements": "Elements tracker",
+    "setup.global.elementsHint": "Lets players track their own elements.",
+    
+    "setup.adversary.primary": "Primary Adversary",
+    "setup.adversary.secondary": "Secondary Adversary",
+    "setup.adversary.description": "Choose adversary and level.",
+    "setup.adversary.name": "Adversary",
+    "setup.adversary.level": "Level",
+    "setup.adversary.none": "None",
+    "setup.adversary.noDescription": "No adversary.",
+    
+    "setup.fear.title": "Fear",
+    "setup.fear.description": "Current fear progress.",
+    "setup.fear.total": "Generated",
+    "setup.fear.cards": "Cards earned",
+    "setup.fear.pool": "Pool",
+    "setup.fear.note": "Fear is changed by permitted players on the play screen.",
+    
+    "stats.title": "Time statistics",
+    "stats.description": "Time is recorded on READY, phase changes and game end.",
+    "stats.currentPhase": "Current phase",
+    "stats.total": "Total",
+    "stats.spirit": "Spirit",
+    "stats.fast": "Fast",
+    "stats.invader": "Invader",
+    "stats.slow": "Slow",
+    "stats.time_passes": "Time Passes",
+    "stats.game": "Whole game",
+    
+    "history.title": "Phase history",
+    "history.description": "Recorded durations of completed phases.",
+    "history.empty": "No completed phases.",
+    "history.turn": "Turn",
+    "history.phase": "Phase",
+    "history.duration": "Time",
+    "history.finished": "game end",
+    
+    "reset.title": "Reset game",
+    "reset.description": "Clears current state, statistics, fear, spirit selections and history.",
+    
+    "common.cancel": "Cancel",
+    "common.confirm": "Confirm",
+    
+    "phase.setup": "Setting up the game",
+    "phase.spirit": "Spirit Phase",
+    "phase.fast": "Fast Powers",
+    "phase.invader": "Invader Phase",
+    "phase.slow": "Slow Powers",
+    "phase.time_passes": "Time Passes",
+    
+    "status.setup": "SETUP",
+    "status.active": "ACTIVE",
+    "status.finished": "FINISHED",
+    
+    "button.start": "START GAME",
+    "button.advance": "ADVANCE PHASE",
+    "button.finish": "END GAME / STOP TIMERS",
+    "button.reset": "RESET GAME",
+    
+    "permission.fear": "Change fear",
+    "permission.advance": "Advance phase",
+    
+    "setup.locked": "Configuration is locked after the game starts.",
+    "setup.ready": "Ready to start.",
+    "setup.active": "Game is running — configuration is locked.",
+    "setup.finished": "Game finished — statistics are frozen.",
+    
+    "confirm.start": "Start the game? Turn 1 and the first phase will begin.",
+    "confirm.finish": "End the game and stop all timers?",
+    "confirm.reset": "Reset the entire game? This cannot be undone.",
+    
+    "message.saved": "Configuration saved.",
+    "message.started": "Game started.",
+    "message.finished": "Game finished.",
+    "message.reset": "Game reset.",
+
+    "error.spiritRequired": "All players must select a spirit before starting the game!"
   }
 };
 
@@ -264,6 +424,7 @@ function renderStatus(g){
   $("adversarySelect").disabled=!editable; 
   $("adversaryLevel").disabled=!editable || !g.adversary?.id;
   $("phaseTitle").textContent = g.game_status==="setup" ? "Konfiguracja gry" : phaseName(PHASES[g.phase_index]);
+  $("phaseTitle").textContent = g.game_status==="setup" ? t("phase.setup") : phaseName(PHASES[g.phase_index]);
   $("phaseSubtitle").textContent = t(g.game_status==="setup"?"setup.ready":g.game_status==="active"?"setup.active":"setup.finished");
 }
 
@@ -366,13 +527,11 @@ function initEvents() {
   $("elementsTracker").addEventListener("change", saveSetupConfig);
 
 $("startGameButton").addEventListener("click", async () => {
-    if (await showConfirmDialog("button.start", "confirm.start")) {
       try {
         await startGame();
       } catch (err) {
         alert(err.message); // Wyświetli komunikat o braku wybranego ducha
       }
-    }
   });
 
   $("advancePhaseButton").addEventListener("click", async () => {
