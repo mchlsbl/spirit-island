@@ -80,6 +80,7 @@ const ADVERSARIES = [
 
 const I18N = {
   pl: {
+    "error.spiritRequired": "Wszyscy gracze muszą wybrać ducha przed rozpoczęciem gry!",
     "app.eyebrow":"HOST / ADMIN", "app.title":"Spirit Island Companion", "status.connecting":"Łączenie…", "status.connected":"Połączono", "status.error":"Błąd połączenia",
     "setup.players.title":"Gracze", "setup.players.description":"Liczba graczy, duchy i uprawnienia.", "setup.players.count":"Liczba graczy", "setup.players.spirit":"Duch",
     "setup.players.noSpirit":"— wybierz ducha —", "setup.players.fear":"Strach", "setup.players.phase":"Faza", "setup.global.title":"Ustawienia globalne", "setup.global.description":"Opcje wspólne dla całej gry.", "setup.global.elements":"Tracker żywiołów", "setup.global.elementsHint":"Pozwala graczom śledzić własne żywioły.",
@@ -94,6 +95,7 @@ const I18N = {
     "confirm.start":"Uruchomić grę? Zostanie rozpoczęta tura 1 i pierwsza faza.", "confirm.finish":"Zakończyć grę i zatrzymać wszystkie timery?", "confirm.reset":"Na pewno zresetować całą grę? Tej operacji nie można cofnąć.", "message.saved":"Zapisano konfigurację.", "message.started":"Gra została uruchomiona.", "message.finished":"Gra została zakończona.", "message.reset":"Gra została zresetowana."
   },
   en: {
+    "error.spiritRequired": "All players must select a spirit before starting the game!",
     "app.eyebrow":"HOST / ADMIN", "app.title":"Spirit Island Companion", "status.connecting":"Connecting…", "status.connected":"Connected", "status.error":"Connection error",
     "setup.players.title":"Players", "setup.players.description":"Player count, spirits and permissions.", "setup.players.count":"Player count", "setup.players.spirit":"Spirit", "setup.players.noSpirit":"— select spirit —", "setup.players.fear":"Fear", "setup.players.phase":"Phase",
     "setup.global.title":"Global settings", "setup.global.description":"Options shared by the whole game.", "setup.global.elements":"Elements tracker", "setup.global.elementsHint":"Lets players track their own elements.",
@@ -177,8 +179,24 @@ export async function startGame() {
   await runTransaction(db, async tx => {
     const s=await tx.get(gameRef); if(!s.exists()) throw Error("Game does not exist.");
     const g=s.data(); if(g.game_status!=="setup") throw Error("Game must be in setup state.");
-    const now=Date.now();
-    tx.update(gameRef,{game_status:"active",turn:1,phase_index:0,phase_start_time:now,"timing.game_started_at":now,"timing.game_finished_at":null});
+
+    // SPRAWDZENIE: Czy każdy gracz wybrał ducha?
+    for(let i = 1; i <= g.player_count; i++) {
+      const playerObj = g.players?.[String(i)];
+      if (!playerObj || !playerObj.spirit_id) {
+        throw Error(t("error.spiritRequired"));
+      }
+    }
+    
+const now = Date.now();
+    tx.update(gameRef, {
+      game_status: "active",
+      turn: 1,
+      phase_index: 0,
+      phase_start_time: now,
+      "timing.game_started_at": now,
+      "timing.game_finished_at": null
+    });
   });
 }
 
