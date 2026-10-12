@@ -365,9 +365,13 @@ function initEvents() {
   $("adversaryLevel").addEventListener("change", saveSetupConfig);
   $("elementsTracker").addEventListener("change", saveSetupConfig);
 
-  $("startGameButton").addEventListener("click", async () => {
+$("startGameButton").addEventListener("click", async () => {
     if (await showConfirmDialog("button.start", "confirm.start")) {
-      await startGame();
+      try {
+        await startGame();
+      } catch (err) {
+        alert(err.message); // Wyświetli komunikat o braku wybranego ducha
+      }
     }
   });
 
