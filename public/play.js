@@ -258,10 +258,10 @@ const ELEMENT_ICONS = {
 };
 
 const PHASE_STEPS = {
-  spirit: { pl: ["Wzrost", "Zyskaj energię", "Zagraj i opłać karty Mocy"], en: ["Growth", "Gain Energy", "Play and Pay for Power Cards"] },
-  fast: { pl: ["Szybkie Moce z kart", "Szybkie Zdolności Wrodzone"], en: ["Fast Power Cards", "Fast Innate Powers"] },
-  invader: { pl: ["Efekt Skażonej Wyspy", "Efekty Strachu", "Ruchy Najeźdźców: Najechanie, Budowa, Eksploracja", "Przesuń karty Najeźdźców"], en: ["Blighted Island Effect", "Fear Effects", "Invader Actions: Ravage, Build, Explore", "Advance Invader Cards"] },
-  slow: { pl: ["Wolne Moce z kart", "Wolne Zdolności Wrodzone"], en: ["Slow Power Cards", "Slow Innate Powers"] },
+  spirit: { pl: ["Rozwój", "Zebranie energii", "Zagranie i opłacenie kart Mocy"], en: ["Growth", "Gain Energy", "Play and Pay for Power Cards"] },
+  fast: { pl: ["Pośpieszne Moce z kart", "Pośpieszne Moce Wrodzone"], en: ["Fast Power Cards", "Fast Innate Powers"] },
+  invader: { pl: ["Zarażona Wyspa", "Strach", "Dewastacja", "Budowa", "Eksploracja", "Awans kart Najeźdźców"], en: ["Blighted Island Effect", "Fear Effects", "Invader Actions: Ravage, Build, Explore", "Advance Invader Cards"] },
+  slow: { pl: ["Powolne Moce z kart", "Powolne Moce Wrodzone"], en: ["Slow Power Cards", "Slow Innate Powers"] },
   time_passes: { pl: ["Odrzuć zagrane karty Mocy", "Odnów zużyte karty", "Przesuń się do następnej tury"], en: ["Discard played Power Cards", "Recover spent cards", "Move to the next turn"] }
 };
 
@@ -283,19 +283,19 @@ const I18N = {
     "play.chooseSpirit": "Wybierz ducha",
     "play.changePlayer": "Zmień gracza",
     "play.currentPhase": "AKTUALNA FAZA",
-    "play.advance": "ADVANCE PHASE",
+    "play.advance": "NASTĘPNA FAZA",
     "play.ready": "GOTOWY",
     "play.readyState": "GOTOWY",
     "play.notReady": "NIE GOTOWY",
     "play.fear.cards": "kart zdobytych",
-    "phase.spirit": "Faza Ducha",
-    "phase.fast": "Szybkie Moce",
-    "phase.invader": "Faza Najeźdźcy",
-    "phase.slow": "Wolne Moce",
-    "phase.time_passes": "Czas Płynie",
-    "status.setup": "SETUP",
-    "status.active": "ACTIVE",
-    "status.finished": "FINISHED",
+    "phase.spirit": "Faza Duchów",
+    "phase.fast": "Faza Pośpiesznych Mocy",
+    "phase.invader": "Faza Najeźdźców",
+    "phase.slow": "Faza Powolnych Mocy",
+    "phase.time_passes": "Przemijanie",
+    "status.setup": "PRZYGOTOWANIE",
+    "status.active": "GRA AKTYWNA",
+    "status.finished": "GRA ZAKOŃCZONA",
     "message.error": "Wystąpił błąd.",
     "play.elements.reset":"RESETUJ ŻYWIOŁY",
     "play.player.statuses":"STATUS GRACZY",
