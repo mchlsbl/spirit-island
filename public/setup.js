@@ -94,11 +94,9 @@ const I18N = {
     "setup.players.fear": "Strach",
     "setup.players.phase": "Faza",
     
-    "setup.global.title": "Ustawienia globalne",
-    "setup.global.description": "Opcje wspólne dla całej gry.",
-    "setup.global.elements": "Tracker żywiołów",
-    "setup.global.elementsHint": "Pozwala graczom śledzić własne żywioły.",
-    
+    "setup.tracker.title": "Licznik Żywiołów",
+
+    "setup.adversary.title": "Przeciwnik",
     "setup.adversary.primary": "Pierwszy przeciwnik",
     "setup.adversary.secondary": "Drugi przeciwnik",
     "setup.adversary.description": "Wybierz przeciwnika i poziom.",
@@ -189,11 +187,9 @@ const I18N = {
     "setup.players.fear": "Fear",
     "setup.players.phase": "Phase",
     
-    "setup.global.title": "Global settings",
-    "setup.global.description": "Options shared by the whole game.",
-    "setup.global.elements": "Elements tracker",
-    "setup.global.elementsHint": "Lets players track their own elements.",
+    "setup.tracker.title": "Global settings",
     
+    "setup.adversary.title": "Primary Adversary",
     "setup.adversary.primary": "Primary Adversary",
     "setup.adversary.secondary": "Secondary Adversary",
     "setup.adversary.description": "Choose adversary and level.",
@@ -289,7 +285,10 @@ export function createInitialGame(playerCount=1) {
   return {
     game_status:"setup", turn:1, phase_index:0, phase_start_time:null,
     player_count:playerCount, players, elements_tracker_enabled:true,
-    adversary:{id:null,level:0,card_text:null},
+    adversary: {
+      primary: { id: null, level: 0 },
+      secondary: { id: null, level: 0 }
+    },
     fear:{total_generated:0,per_card:playerCount*4,log:[]}, phase_history:[],
     timing:{setup_started_at:Date.now(),game_started_at:null,game_finished_at:null}
   };
@@ -325,13 +324,22 @@ async function saveSetupConfig() {
     };
     players[String(i)] = p;
   }
-  const advId = $("adversarySelect").value || null;
-  const adversary = ADVERSARIES.find(a=>a.id===advId) || ADVERSARIES[0];
-  const level = adversary.id ? Number($("adversaryLevel").value) : 0;
+  // Pierwszy przeciwnik
+  const adv1Id = $("adversarySelect").value || null;
+  const adv1 = ADVERSARIES.find(a => a.id === adv1Id) || ADVERSARIES[0];
+  const level1 = adv1.id ? Number($("adversaryLevel").value) : 0;
+  // Drugi przeciwnik
+  const adv2Id = $("adversarySelect_2").value || null;
+  const adv2 = ADVERSARIES.find(a => a.id === adv2Id) || ADVERSARIES[0];
+  const level2 = adv2.id ? Number($("adversaryLevel_2").value) : 0;
+  
   await updateDoc(gameRef, {
     players,
     elements_tracker_enabled: $("elementsTracker").checked,
-    adversary:{id:adversary.id,level}
+    adversary: {
+      primary: { id: adv1.id, level: level1 },
+      secondary: { id: adv2.id, level: level2 }
+    }
   });
 }
 
@@ -422,7 +430,9 @@ function renderStatus(g){
   $("playerCount").disabled=!editable; 
   $("elementsTracker").disabled=!editable; 
   $("adversarySelect").disabled=!editable; 
+  $("adversarySelect_2").disabled=!editable; 
   $("adversaryLevel").disabled=!editable || !g.adversary?.id;
+  $("adversaryLevel_2").disabled=!editable || !g.adversary?.id;
   $("phaseTitle").textContent = g.game_status==="setup" ? "Konfiguracja gry" : phaseName(PHASES[g.phase_index]);
   $("phaseTitle").textContent = g.game_status==="setup" ? t("phase.setup") : phaseName(PHASES[g.phase_index]);
   $("phaseSubtitle").textContent = t(g.game_status==="setup"?"setup.ready":g.game_status==="active"?"setup.active":"setup.finished");
@@ -439,20 +449,40 @@ function renderPlayers(g){
 }
 
 function renderAdversary(g){
-  $("adversarySelect").innerHTML=ADVERSARIES.map(a=>`<option value="${a.id??""}">${a[lang]}</option>`).join("");
-  $("adversarySelect").value=g.adversary?.id??"";
-  
-  // Poziomy 0 do 6
-  $("adversaryLevel").innerHTML=Array.from({length:7},(_,i)=>`<option value="${i}">${i}</option>`).join("");
-  $("adversaryLevel").value=String(g.adversary?.level??0);
-  
-  const a=ADVERSARIES.find(x=>x.id===g.adversary?.id)||ADVERSARIES[0];
-  $("adversaryPreview").textContent=a.id ? `${a[lang]} · ${lang==="pl"?"Poziom":"Level"} ${g.adversary?.level??0}${a.cardText?` — ${a.cardText}`:""}` : t("setup.adversary.noDescription");
-}
+  const advOptions = ADVERSARIES.map(a => `<option value="${a.id??""}">${a[lang]}</option>`).join("");
+  const levelOptions = Array.from({length: 7}, (_, i) => `<option value="${i}">${i}</option>`).join("");
+  const editable = g.game_status === "setup";
 
-function renderFear(g){
-  const total=Number(g.fear?.total_generated||0), per=Number(g.fear?.per_card||0), cards=per?Math.floor(total/per):0, pool=per?total%per:0;
-  $("fearTotal").textContent=String(total); $("fearCards").textContent=String(cards); $("fearPool").textContent=`${pool} / ${per}`;
+  // Pierwszy przeciwnik
+  $("adversarySelect").innerHTML = advOptions;
+  $("adversarySelect").value = g.adversary?.primary?.id ?? "";
+  $("adversarySelect").disabled = !editable;
+
+  $("adversaryLevel").innerHTML = levelOptions;
+  $("adversaryLevel").value = String(g.adversary?.primary?.level ?? 0);
+  $("adversaryLevel").disabled = !editable || !g.adversary?.primary?.id;
+
+  // Drugi przeciwnik
+  $("adversarySelect_2").innerHTML = advOptions;
+  $("adversarySelect_2").value = g.adversary?.secondary?.id ?? "";
+  $("adversarySelect_2").disabled = !editable;
+
+  $("adversaryLevel_2").innerHTML = levelOptions;
+  $("adversaryLevel_2").value = String(g.adversary?.secondary?.level ?? 0);
+  $("adversaryLevel_2").disabled = !editable || !g.adversary?.secondary?.id;
+
+  // Podgląd tekstowy
+  const a1 = ADVERSARIES.find(x => x.id === g.adversary?.primary?.id) || ADVERSARIES[0];
+  const a2 = ADVERSARIES.find(x => x.id === g.adversary?.secondary?.id) || ADVERSARIES[0];
+
+  let previewText = t("setup.adversary.noDescription");
+  if (a1.id) {
+    previewText = `${a1[lang]} · ${lang==="pl"?"Poziom":"Level"} ${g.adversary?.primary?.level ?? 0}`;
+    if (a2.id) {
+      previewText += ` + ${a2[lang]} · ${lang==="pl"?"Poziom":"Level"} ${g.adversary?.secondary?.level ?? 0}`;
+    }
+  }
+  $("adversaryPreview").textContent = previewText;
 }
 
 function renderStats(g){
@@ -525,7 +555,11 @@ function initEvents() {
   $("adversarySelect").addEventListener("change", saveSetupConfig);
   $("adversaryLevel").addEventListener("change", saveSetupConfig);
   $("elementsTracker").addEventListener("change", saveSetupConfig);
-
+  $("adversarySelect").addEventListener("change", saveSetupConfig);
+  $("adversaryLevel").addEventListener("change", saveSetupConfig);
+  $("adversarySelect_2").addEventListener("change", saveSetupConfig);
+  $("adversaryLevel_2").addEventListener("change", saveSetupConfig);
+  
 $("startGameButton").addEventListener("click", async () => {
       try {
         await startGame();
