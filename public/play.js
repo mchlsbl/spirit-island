@@ -354,20 +354,34 @@ function error(message) {
 
 function formatAdversary(g) {
   const adv = g.adversary;
-  if (!adv || !adv.id || adv.id === "none") {
+  
+  // Sprawdzamy czy mamy strukturę z primary/secondary, czy starą (fallback)
+  const primary = adv?.primary || (adv?.id ? adv : null);
+  const secondary = adv?.secondary;
+
+  if (!primary || !primary.id || primary.id === "none") {
     const noneAdv = ADVERSARIES.find(a => a.id === null);
     return lang === "pl" ? noneAdv.pl : noneAdv.en;
   }
-  
-  // Szukamy adwersarza w tablicy ADVERSARIES
-  const match = ADVERSARIES.find(a => a.id === adv.id);
-  const name = match ? (lang === "pl" ? match.pl : match.en) : adv.id;
 
-  // Formatowanie poziomu trudności (jeśli występuje)
   const levelText = lang === "pl" ? "Poziom" : "Level";
-  const level = adv.level !== undefined && adv.level !== null ? ` / ${levelText} ${adv.level}` : "";
+
+  // Główny przeciwnik
+  const match1 = ADVERSARIES.find(a => a.id === primary.id);
+  const name1 = match1 ? (lang === "pl" ? match1.pl : match1.en) : primary.id;
+  const level1 = primary.level !== undefined && primary.level !== null ? ` ${levelText} ${primary.level}` : "";
   
-  return `${name}${level}`;
+  let result = `${name1} (${level1})`;
+
+  // Drugi przeciwnik (jeśli wybrano)
+  if (secondary && secondary.id && secondary.id !== "none") {
+    const match2 = ADVERSARIES.find(a => a.id === secondary.id);
+    const name2 = match2 ? (lang === "pl" ? match2.pl : match2.en) : secondary.id;
+    const level2 = secondary.level !== undefined && secondary.level !== null ? ` ${levelText} ${secondary.level}` : "";
+    result += ` + ${name2} (${level2})`;
+  }
+
+  return result;
 }
 
 function phaseName(id) {
@@ -496,17 +510,37 @@ function renderFear(g) {
   }
 }
 
-/* Renderowanie adwersarza i opcjonalnej grafiki planszy */
+/* Renderowanie adwersarzy i opcjonalnych grafik plansz */
 function renderAdversary(g) {
   $("adversaryTitle").textContent = formatAdversary(g);
   const boardImgContainer = $("adversaryBoard");
   
   const adv = g.adversary;
-  const match = ADVERSARIES.find(a => a.id === adv?.id);
-  const imageSrc = match ? (lang === "pl" ? match.image_pl : match.image_en) : null;
+  const primary = adv?.primary || (adv?.id ? adv : null);
+  const secondary = adv?.secondary;
 
-  if (imageSrc) {
-    boardImgContainer.innerHTML = `<img src="${imageSrc}" alt="${match[lang]}" class="adversary-card-img" onerror="this.style.display='none'">`;
+  let imagesHtml = "";
+
+  // Grafika pierwszego przeciwnika
+  if (primary && primary.id) {
+    const match1 = ADVERSARIES.find(a => a.id === primary.id);
+    const imageSrc1 = match1 ? (lang === "pl" ? match1.image_pl : match1.image_en) : null;
+    if (imageSrc1) {
+      imagesHtml += `<img src="${imageSrc1}" alt="${match1[lang]}" class="adversary-card-img" onerror="this.style.display='none'">`;
+    }
+  }
+
+  // Grafika drugiego przeciwnika
+  if (secondary && secondary.id) {
+    const match2 = ADVERSARIES.find(a => a.id === secondary.id);
+    const imageSrc2 = match2 ? (lang === "pl" ? match2.image_pl : match2.image_en) : null;
+    if (imageSrc2) {
+      imagesHtml += `<img src="${imageSrc2}" alt="${match2[lang]}" class="adversary-card-img" onerror="this.style.display='none'">`;
+    }
+  }
+
+  if (imagesHtml) {
+    boardImgContainer.innerHTML = imagesHtml;
     boardImgContainer.classList.remove("hidden");
   } else {
     boardImgContainer.innerHTML = "";
