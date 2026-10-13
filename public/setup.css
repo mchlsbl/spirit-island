@@ -413,14 +413,14 @@ select {
 /* Pierwsza kolumna (np. Nazwa gracza / Duch) może być nieco szersza */
 .stats-table th:first-child,
 .stats-table td:first-child {
-  width: 110px; 
+  width: 90px; 
   white-space: normal; /* Pozwala na zawijanie nazwy ducha w razie potrzeby */
 }
 
 /* Pozostałe kolumny z czasami faz (Łącznie, Duchów, Pośpieszne itd.) dostają równe, stałe szerokości */
 .stats-table th:not(:first-child),
 .stats-table td:not(:first-child) {
-  width: 75px;
+  width: 30px;
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis; /* Jeśli tekst będzie za długi, przytnie go do kropek */
@@ -435,7 +435,7 @@ select {
 
 .stats-table th {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 9px;
   text-transform: uppercase;
   letter-spacing: .04em;
 }
