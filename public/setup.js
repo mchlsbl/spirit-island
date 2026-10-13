@@ -422,7 +422,11 @@ function applyTranslations(){
 }
 
 function renderStatus(g){
-  const badge=$("statusBadge"); badge.textContent=t(`status.${g.game_status}`); badge.className=`status-pill status-${g.game_status}`;
+  const badge=$("statusBadge"); 
+  if (badge) {
+    badge.textContent=t(`status.${g.game_status}`); 
+    badge.className=`status-pill status-${g.game_status}`;
+  }
   $("startGameButton").disabled=g.game_status!=="setup";
   $("advancePhaseButton").disabled=g.game_status!=="active";
   $("finishGameButton").disabled=g.game_status!=="active";
@@ -431,10 +435,11 @@ function renderStatus(g){
   $("elementsTracker").disabled=!editable; 
   $("adversarySelect").disabled=!editable; 
   $("adversarySelect_2").disabled=!editable; 
-  $("adversaryLevel").disabled=!editable || !g.adversary?.id;
-  $("adversaryLevel_2").disabled=!editable || !g.adversary?.id;
-  $("phaseTitle").textContent = g.game_status==="setup" ? t("phase.setup") : phaseName(PHASES[g.phase_index]);
-  $("phaseSubtitle").textContent = t(g.game_status==="setup"?"setup.ready":g.game_status==="active"?"setup.active":"setup.finished");
+  $("adversaryLevel").disabled=!editable || !g.adversary?.primary?.id;
+  $("adversaryLevel_2").disabled=!editable || !g.adversary?.secondary?.id;
+  
+  if ($("phaseTitle")) $("phaseTitle").textContent = g.game_status==="setup" ? t("phase.setup") : phaseName(PHASES[g.phase_index]);
+  if ($("phaseSubtitle")) $("phaseSubtitle").textContent = t(g.game_status==="setup"?"setup.ready":g.game_status==="active"?"setup.active":"setup.finished");
 }
 
 function renderPlayers(g){
@@ -482,6 +487,17 @@ function renderAdversary(g){
     }
   }
   $("adversaryPreview").textContent = previewText;
+}
+
+function renderFear(g) {
+  const total = Number(g.fear?.total_generated || 0);
+  const per = Number(g.fear?.per_card || 0);
+  const cards = per ? Math.floor(total / per) : 0;
+  const pool = per ? total % per : 0;
+
+  if ($("fearTotal")) $("fearTotal").textContent = total;
+  if ($("fearCards")) $("fearCards").textContent = cards;
+  if ($("fearPool")) $("fearPool").textContent = `${pool} / ${per}`;
 }
 
 function renderStats(g){
