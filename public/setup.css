@@ -432,10 +432,13 @@ select {
   text-align: left;
   border-bottom: 1px solid var(--border);
 }
+.stats-table th:not(:first-child){
+  font-size: 8px;
+}
+
 
 .stats-table th {
   color: var(--muted);
-  font-size: 9px;
   text-transform: uppercase;
   letter-spacing: .04em;
 }
