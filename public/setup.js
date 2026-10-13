@@ -428,7 +428,7 @@ function renderStatus(g){
   $("finishGameButton").disabled=g.game_status!=="active";
   const editable=g.game_status==="setup";
   $("playerCount").disabled=!editable; 
-//  $("elementsTracker").disabled=!editable; 
+  $("elementsTracker").disabled=!editable; 
   $("adversarySelect").disabled=!editable; 
   $("adversarySelect_2").disabled=!editable; 
   $("adversaryLevel").disabled=!editable || !g.adversary?.id;
