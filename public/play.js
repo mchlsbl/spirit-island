@@ -562,14 +562,16 @@ function renderPlayersStatus(g) {
   const listContainer = $("playersStatusList");
   if (!listContainer) return;
   const totalPlayers = g.player_count || 0;
+  const phase = PHASES[g.phase_index] || "spirit";
   let html = "";
 
-  for (let i = 1; i <= totalPlayers; i++) {
+for (let i = 1; i <= totalPlayers; i++) {
     const p = g.players?.[String(i)] || {};
     const isMe = i === selectedPlayer;
-    const isReady = !!p.ready;
     
-   // Główny tekst to teraz nazwa ducha
+    // W fazach "invader" i "time_passes" każdy automatycznie ma status gotowości wizualnie
+    const isReady = (phase === "invader" || phase === "time_passes") ? true : !!p.ready;
+    
     const mainTitle = p.spirit_id ? spiritName(p.spirit_id) : (lang === "pl" ? "Brak wybranego ducha" : "No spirit chosen");
 
     html += `
@@ -615,10 +617,11 @@ function render(g) {
 
   $("phaseTitle").textContent = phaseName(phase);
   renderPhaseSteps(phase);
-  const ready = !!p.ready;
-  const readyEligible = phase !== "invader" && phase !== "time_passes";
-  $("readyState").textContent = ready ? t("play.readyState") : t("play.notReady");
-  $("readyState").className = `ready-badge ${ready ? "ready-yes" : "ready-no"}`;
+  const isAutoPhase = phase === "invader" || phase === "time_passes";
+  const ready = isAutoPhase ? true : !!p.ready;
+  const readyEligible = !isAutoPhase;
+  $("readyState").textContent = t("play.readyState");
+  $("readyState").className = "ready-badge ready-yes";
   $("readyButton").textContent = ready ? t("play.readyState") : t("play.ready");
   $("readyButton").disabled = g.game_status !== "active" || !readyEligible || ready;
 
