@@ -30,7 +30,7 @@
 
 html, body {
   /* Zapewnia, że strona ma co najmniej 100% wysokości okna przeglądarki */
-  min-height: 120vh;
+  min-height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -142,7 +142,8 @@ h3 {
 
 .page-shell {
   width: min(1180px, calc(100% - 32px));
-  margin: 24px auto 48px;
+  margin: 24px auto;
+  padding-bottom: 120px; /* Zwiększ tę wartość, jeśli chcesz mieć więcej wolnego miejsca na dole */
 }
 
 .picker-card {
@@ -287,6 +288,9 @@ h3 {
 .adversary-board-container {
   margin-top: 12px;
   display: flex;
+  flex-direction: column;   /* Ustawia obrazki pionowo, jeden pod drugim */
+  align-items: center;      /* Wyśrodkowuje obrazki w poziomie */
+  gap: 10px;                /* Odstęp między pierwszym a drugim adwersarzem */
   justify-content: center;
 }
 
