@@ -706,8 +706,13 @@ async function advancePhase() {
           p.time_tracking.total_seconds += seconds;
           p.time_tracking.phase_times[phase] += seconds;
         }
-        p.ready = false;
-        delete p.ready_at;
+        // Resetujemy ready tylko wtedy, gdy następna faza tego wymaga, 
+        // lub zostawiamy stan, jeśli wchodzimy w fazę najeźdźców / przemijania
+        const nextPhase = PHASES[next];
+        if (nextPhase !== "invader" && nextPhase !== "time_passes") {
+          p.ready = false;
+        }
+          delete p.ready_at;
       }
 
       const last = g.phase_index === PHASES.length - 1;
