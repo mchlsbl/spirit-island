@@ -37,7 +37,7 @@ body {
 .page-shell {
   width: min(1180px, calc(100% - 32px));
   margin: 24px auto;
-  padding-bottom: 120px;
+  padding-bottom: 15px;
   flex: 1; /* Sprawia, że strona naturalnie rozciąga się na całą wysokość ekranu */
 }
 
