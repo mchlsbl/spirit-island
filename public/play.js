@@ -698,7 +698,7 @@ async function advancePhase() {
       const seconds = Math.max(0, Math.floor((now - start) / 1000));
       const players = structuredClone(g.players);
 
-      for (let i = 1; i <= g.player_count; i++) {
+    for (let i = 1; i <= g.player_count; i++) {
         const p = players[String(i)];
         if (!p) continue;
         const full = phase === "invader" || phase === "time_passes" || p.ready !== true;
@@ -706,13 +706,8 @@ async function advancePhase() {
           p.time_tracking.total_seconds += seconds;
           p.time_tracking.phase_times[phase] += seconds;
         }
-        // Resetujemy ready tylko wtedy, gdy następna faza tego wymaga, 
-        // lub zostawiamy stan, jeśli wchodzimy w fazę najeźdźców / przemijania
-        const nextPhase = PHASES[next];
-        if (nextPhase !== "invader" && nextPhase !== "time_passes") {
-          p.ready = false;
-        }
-          delete p.ready_at;
+        p.ready = false;
+        delete p.ready_at;
       }
 
       const last = g.phase_index === PHASES.length - 1;
