@@ -284,7 +284,7 @@ export function createInitialGame(playerCount=1) {
   for(let i=1;i<=playerCount;i++) players[String(i)] = player();
   return {
     game_status:"setup", turn:1, phase_index:0, phase_start_time:null,
-    player_count:playerCount, players, elements_tracker_enabled:true,
+    player_count:playerCount, players, elements_tracker_enabled:false,
     adversary: {
       primary: { id: null, level: 0 },
       secondary: { id: null, level: 0 }
@@ -405,7 +405,7 @@ export async function finishGame() {
   });
 }
 
-export async function resetGame(playerCount=1) { await setDoc(gameRef,createInitialGame(playerCount)); }
+export async function resetGame(playerCount=1, ) { await setDoc(gameRef,createInitialGame(playerCount)); }
 
 function t(key){ return I18N[lang]?.[key] ?? I18N.pl[key] ?? key; }
 function formatSeconds(total) { total=Math.max(0,Number(total)||0); const h=Math.floor(total/3600),m=Math.floor((total%3600)/60),s=total%60; return h?`${h}h ${String(m).padStart(2,"0")}m`: `${m}m ${String(s).padStart(2,"0")}s`; }
