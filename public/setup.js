@@ -187,7 +187,7 @@ const I18N = {
     "setup.players.fear": "Fear",
     "setup.players.phase": "Phase",
     
-    "setup.tracker.title": "Global settings",
+    "setup.tracker.title": "Elements Tracker",
     
     "setup.adversary.title": "Primary Adversary",
     "setup.adversary.primary": "Primary Adversary",
