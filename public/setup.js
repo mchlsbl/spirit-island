@@ -433,7 +433,6 @@ function renderStatus(g){
   $("adversarySelect_2").disabled=!editable; 
   $("adversaryLevel").disabled=!editable || !g.adversary?.id;
   $("adversaryLevel_2").disabled=!editable || !g.adversary?.id;
-  $("phaseTitle").textContent = g.game_status==="setup" ? "Konfiguracja gry" : phaseName(PHASES[g.phase_index]);
   $("phaseTitle").textContent = g.game_status==="setup" ? t("phase.setup") : phaseName(PHASES[g.phase_index]);
   $("phaseSubtitle").textContent = t(g.game_status==="setup"?"setup.ready":g.game_status==="active"?"setup.active":"setup.finished");
 }
