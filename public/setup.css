@@ -74,6 +74,9 @@ html.dark-theme .info-box {
   color: #aaaaaa;
 }
 
+html.dark-theme .confirm-card {
+  color: #aaaaaa;
+}
 
 body {
   margin: 0;
@@ -257,7 +260,7 @@ h3 {
 
 .button-danger-outline {
   color: var(--danger);
-  border-color: #d9aaa4;
+  border-color: var(--danger);
   background: var(--danger-bg);
 }
 
