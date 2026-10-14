@@ -42,8 +42,9 @@ html.dark-theme {
   --danger-bg: #451a03;
   --shadow: 0 8px 28px rgba(0, 0, 0, .4);
   color: #e4e4e7;
-  background: #121212;
+/*  background: #121212; */
 }
+
 
 /* Dostosowanie elementów topbara i tła w trybie ciemnym */
 html.dark-theme body {
@@ -59,6 +60,15 @@ html.dark-theme select,
 html.dark-theme .button {
   background: var(--surface-2);
   color: #e4e4e7;
+}
+
+html.dark-theme .danger-zone {
+  border-color: #7f1d1d; /* Ciemniejsza, stonowana czerwona ramka */
+  background: #2a1215;  /* Ciemne, wpadające w czerwień tło pasujące do trybu ciemnego */
+}
+
+html.dark-theme .player-number {
+  background: #3f3f46;
 }
 
 
@@ -362,6 +372,10 @@ select {
   color: #55534c;
 }
 
+.tracker {
+transform: scale(2);
+}
+
 .permission input,
 .switch-row input {
   accent-color: var(--accent);
@@ -386,7 +400,7 @@ select {
 
 .info-box {
   margin-top: 12px;
-  min-height: 54px;
+  min-height: 20px;
   padding: 10px 12px;
   border-radius: 9px;
   background: var(--surface-2);
