@@ -4,7 +4,7 @@
   line-height: 1.45;
   font-synthesis: none;
   --surface: #fffdf8;
-  --surface2: #f8f5ee;
+  --surface-2: #f8f5ee;
   --border: #ded8cb;
   --muted: #706e67;
   --accent: #257338;
@@ -56,6 +56,14 @@ html.dark-theme .button {
 html.dark-theme .danger-zone {
   border-color: #80301d; /* Ciemniejsza, stonowana czerwona ramka */
   background: #291712;  /* Ciemne, wpadające w czerwień tło pasujące do trybu ciemnego */
+}
+
+html.dark-theme .player-button {
+  background: #3f3f46;
+}
+
+html.dark-theme .player-number {
+  background: #3f3f46;
 }
 
 html.dark-theme .permission {
@@ -223,7 +231,7 @@ h3 {
   padding: 8px 8px;
   border: 1px solid var(--border);
   border-radius: 50px;
-  background: var(--surface2);
+  background: var(--surface-2);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -268,7 +276,7 @@ h3 {
   padding: 14px;
   border: 1px solid var(--border);
   border-radius: 20px;
-  background: var(--surface2);
+  background: var(--surface-2);
   color: #24241f;
   text-align: center;
   gap: 8px;
@@ -391,7 +399,7 @@ h3 {
   padding: 11px 12px;
   border: 1px solid var(--border);
   border-radius: 10px;
-  background: var(--surface2);
+  background: var(--surface-2);
 }
 
 .phase-step .num {
@@ -442,7 +450,7 @@ h3 {
 }
 
 .button-secondary {
-  background: var(--surface2);
+  background: var(--surface-2);
 }
 
 .button-ghost {
@@ -466,7 +474,7 @@ h3 {
   position: relative;
   width: 100%;
   height: 30px;
-  background-color: var(--surface2);
+  background-color: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: 20px;
   overflow: hidden;
@@ -513,7 +521,7 @@ h3 {
   min-height: 50px;
   border: 1px solid var(--border);
   border-radius: 25px;
-  background: var(--surface2);
+  background: var(--surface-2);
   font-weight: 900;
 }
 
@@ -533,7 +541,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--surface2);
+  background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 4px;
