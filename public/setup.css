@@ -104,12 +104,26 @@ button {
   align-items: center;
   gap: 16px;
   border-bottom: 1px solid var(--border);
-  background: rgba(255, 253, 248, .9);
+  background: rgba(255, 253, 248, .5);
   backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 10;
 }
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topbar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
 
 .eyebrow {
   margin: 0 0 2px;
@@ -138,7 +152,6 @@ h3 {
   font-size: 18px;
 }
 
-.topbar-actions,
 .hero-actions,
 .danger-actions,
 .confirm-actions {
@@ -577,6 +590,16 @@ transform: scale(2);
   .topbar {
     align-items: flex-start;
   }
+  .topbar-actions {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+  .topbar-buttons {
+    display: flex;
+    gap: 6px;
+  }
+  
   .player-row {
     grid-template-columns: 40px 1fr;
   }
