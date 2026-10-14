@@ -9,8 +9,8 @@
   --muted: #706e67;
   --accent: #257338;
   --accent2: #C0EBC8;
-  --danger: #9a4038;
-  --dangerbg: #f8e8e5;
+  --danger: #80301d;
+  --danger-bg: #291712;
   --shadow: 0 8px 28px rgba(43, 39, 31, .07);
 }
 * { box-sizing: border-box; }
@@ -32,7 +32,7 @@ html {
 html.dark-theme {
   --surface: #252525;
   --surface-2: #353535;
-  --border: #3f3f46;
+  --border: #454545;
   --muted: #a1a1aa;
   --accent: #4ade80;
   --accent-2: #14532d;
@@ -60,23 +60,14 @@ html.dark-theme .danger-zone {
 }
 
 html.dark-theme .player-button {
-  background: #3f3f46;
+  background: #454545;
+}
+html.dark-theme .phase-step .num {
+  background: #454545;
 }
 
 html.dark-theme .player-number {
   color: #e4e4e7;
-}
-
-html.dark-theme .permission {
-  color: #aaaaaa;
-}
-
-html.dark-theme .field {
-  color: #aaaaaa;
-}
-
-html.dark-theme .info-box {
-  color: #aaaaaa;
 }
 
 html.dark-theme .main-title {
@@ -88,6 +79,10 @@ html.dark-theme .fear-button {
 }
 
 html.dark-theme .element.style {
+  color: #e4e4e7;
+}
+
+html.dark-theme .fear-bar-text {
   color: #e4e4e7;
 }
 
@@ -210,7 +205,7 @@ h3 {
 }
 
 .ready-no {
-  background: #733225;
+  background: var(--danger-bg);
   color: #E8E8E8;
 }
 
@@ -235,7 +230,7 @@ h3 {
 /* Przyciski wyboru gracza */
 .player-buttons {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-ns: repeat(4, 1fr);
   gap: 12px;
   margin-top: 22px;
 }
@@ -247,7 +242,7 @@ h3 {
   border-radius: 50px;
   background: var(--surface-2);
   display: flex;
-  flex-direction: column;
+  flex-direction: n;
   justify-content: center;
   align-items: center;
   gap: 4px;
@@ -276,7 +271,7 @@ h3 {
 /* Przyciski wyboru ducha */
 .spirit-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-ns: repeat(2, 1fr);
   gap: 12px;
   margin-top: 22px;
   text-align: center;
@@ -284,7 +279,7 @@ h3 {
 
 .spirit-button {
   display: flex;
-  flex-direction: column;
+  flex-direction: n;
   align-items: center;
   justify-content: center;
   padding: 14px;
@@ -311,7 +306,7 @@ h3 {
 
 .spirit-names {
   display: flex;
-  flex-direction: column;
+  flex-direction: n;
   gap: 2px;
 }
 
@@ -341,6 +336,7 @@ h3 {
   border-radius: 30px;
   box-shadow: var(--shadow);
   padding: 18px;
+  margin-bottom: 16px;
 }
 
 .game-header {
@@ -362,7 +358,7 @@ h3 {
 .adversary-board-container {
   margin-top: 12px;
   display: flex;
-  flex-direction: column;   /* Ustawia obrazki pionowo, jeden pod drugim */
+  flex-direction: n;   /* Ustawia obrazki pionowo, jeden pod drugim */
   align-items: center;      /* Wyśrodkowuje obrazki w poziomie */
   gap: 10px;                /* Odstęp między pierwszym a drugim adwersarzem */
   justify-content: center;
@@ -379,13 +375,12 @@ h3 {
 
 .layout {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-ns: 1fr;
   gap: 16px;
 }
 
 .main-column {
   display: grid;
-  gap: 16px;
   align-content: start;
 }
 
@@ -594,8 +589,8 @@ h3 {
 
 .alert-error {
   color: #7b2f29;
-  background: var(--dangerbg);
-  border-color: #e1b5af;
+  background: var(--danger-bg);
+  border-color: var(--danger);
 }
 
 @media(max-width: 680px) {
