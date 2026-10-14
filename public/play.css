@@ -86,6 +86,10 @@ html.dark-theme .fear-bar-text {
   color: #e4e4e7;
 }
 
+html.dark-theme .spirit-button {
+  color: #e4e4e7;
+}
+
 
   
 
@@ -106,7 +110,7 @@ button {
 .topbar {
   min-height: 74px;
   padding: 14px max(20px, calc((100vw - 1180px) / 2));
-  display: flex;
+  display: ;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
@@ -161,27 +165,27 @@ h3 {
 }
 
 .picker-actions, .phase-actions {
-  display: flex;
+  display: ;
   align-items: center;
   gap: 8px;
-  flex-wrap: wrap;
+  -wrap: wrap;
 }
 
 .topbar-actions {
-  display: flex;
+  display: ;
   align-items: center;
   justify-content: right;
   gap: 8px;
 }
 
 .topbar-buttons {
-  display: flex;
+  display: ;
   align-items: center;
   gap: 8px;
 }
 
 .badge, .status-pill, .ready-badge {
-  display: inline-flex;
+  display: inline-;
   align-items: center;
   width: max-content;
   padding: 4px 9px;
@@ -213,7 +217,7 @@ h3 {
   width: min(1180px, calc(100% - 32px));
   margin: 24px auto;
   padding-bottom: 15px;
-  flex: 1; /* Sprawia, że strona naturalnie rozciąga się na całą wysokość ekranu */
+  : 1; /* Sprawia, że strona naturalnie rozciąga się na całą wysokość ekranu */
 }
 
 .picker-card {
@@ -241,8 +245,8 @@ h3 {
   border: 1px solid var(--border);
   border-radius: 50px;
   background: var(--surface-2);
-  display: flex;
-  flex-direction: n;
+  display: ;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 4px;
@@ -279,7 +283,7 @@ h3 {
 
 .spirit-button {
   display: flex;
-  flex-direction: n;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 14px;
@@ -306,7 +310,7 @@ h3 {
 
 .spirit-names {
   display: flex;
-  flex-direction: n;
+  flex-direction: column;
   gap: 2px;
 }
 
@@ -358,7 +362,7 @@ h3 {
 .adversary-board-container {
   margin-top: 12px;
   display: flex;
-  flex-direction: n;   /* Ustawia obrazki pionowo, jeden pod drugim */
+  flex-direction: column;   /* Ustawia obrazki pionowo, jeden pod drugim */
   align-items: center;      /* Wyśrodkowuje obrazki w poziomie */
   gap: 10px;                /* Odstęp między pierwszym a drugim adwersarzem */
   justify-content: center;
