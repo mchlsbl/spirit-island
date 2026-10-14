@@ -328,11 +328,15 @@ const I18N = {
   }
 };
 
-let lang = localStorage.getItem("sic_language") || "pl";
+let lang = localStorage.getItem("sic_language") || "en";
 let currentGame = null;
 let selectedPlayer = null;
 let selectedSpirit = null;
 let unsubscribe = null;
+let currentTheme = localStorage.getItem("sic_theme") || "dark";
+if (currentTheme === "dark") {
+  document.documentElement.classList.add("dark-theme");
+}
 
 const $ = id => document.getElementById(id);
 const emptyElements = () => ({ sun: 0, moon: 0, fire: 0, air: 0, water: 0, earth: 0, plant: 0, animal: 0 });
@@ -440,6 +444,11 @@ function applyTranslations() {
   document.querySelectorAll("[data-i18n]").forEach(el => el.textContent = t(el.dataset.i18n));
   $("languageToggle").textContent = lang === "pl" ? "EN" : "PL";
   if (currentGame) render(currentGame);
+}
+
+function toggleTheme() {
+  const isDark = document.documentElement.classList.toggle("dark-theme");
+  localStorage.setItem("sic_theme", isDark ? "dark" : "light");
 }
 
 function showPlayerPicker() {
@@ -843,6 +852,12 @@ $("fearControls").addEventListener("click", e => {
   const b = e.target.closest("[data-fear]");
   if (b) changeFear(Number(b.dataset.fear));
 });
+
+const themeBtn = $("themeToggle");
+if (themeBtn) {
+  themeBtn.textContent = "◐";
+  themeBtn.addEventListener("click", toggleTheme);
+}
 
 const resetElementsBtn = $("resetElementsButton");
 if (resetElementsBtn) {
