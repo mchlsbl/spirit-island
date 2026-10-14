@@ -110,7 +110,7 @@ button {
 .topbar {
   min-height: 74px;
   padding: 14px max(20px, calc((100vw - 1180px) / 2));
-  display: ;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
@@ -165,21 +165,21 @@ h3 {
 }
 
 .picker-actions, .phase-actions {
-  display: ;
+  display: flex;
   align-items: center;
   gap: 8px;
   -wrap: wrap;
 }
 
 .topbar-actions {
-  display: ;
+  display: flex;
   align-items: center;
   justify-content: right;
   gap: 8px;
 }
 
 .topbar-buttons {
-  display: ;
+  display: flex;
   align-items: center;
   gap: 8px;
 }
@@ -245,7 +245,7 @@ h3 {
   border: 1px solid var(--border);
   border-radius: 50px;
   background: var(--surface-2);
-  display: ;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
