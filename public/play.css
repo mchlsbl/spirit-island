@@ -64,7 +64,7 @@ html.dark-theme .player-button {
 }
 
 html.dark-theme .player-number {
-  background: #e4e4e7;
+  color: #e4e4e7;
 }
 
 html.dark-theme .permission {
@@ -194,6 +194,9 @@ h3 {
   font-size: 11px;
   font-weight: 800;
   letter-spacing: .06em;
+  background: var(--surface-2);
+  min-width: 86px;
+  justify-content: center;
 }
 
 .badge {
