@@ -267,8 +267,12 @@ const I18N = {
   }
 };
 
-let lang = localStorage.getItem("sic_language") || "pl";
+let lang = localStorage.getItem("sic_language") || "en";
 let currentGame = null;
+let currentTheme = localStorage.getItem("sic_theme") || "dark";
+if (currentTheme === "dark") {
+  document.documentElement.classList.add("dark-theme");
+}
 
 const $ = (id) => document.getElementById(id);
 const emptyElements = () => ({sun:0,moon:0,fire:0,air:0,water:0,earth:0,plant:0,animal:0});
@@ -554,6 +558,14 @@ function showConfirmDialog(titleKey, textKey) {
   });
 }
 
+function toggleTheme() {
+  const isDark = document.documentElement.classList.toggle("dark-theme");
+  localStorage.setItem("sic_theme", isDark ? "dark" : "light");
+}
+
+
+
+
 function initEvents() {
   $("languageToggle").addEventListener("click", () => {
     lang = lang === "pl" ? "en" : "pl";
@@ -598,6 +610,13 @@ $("startGameButton").addEventListener("click", async () => {
       await resetGame(currentGame?.player_count || 1);
     }
   });
+}
+
+// Inicjalizacja języka:
+const themeBtn = $("themeToggle");
+if (themeBtn) {
+  themeBtn.textContent = "◐";
+  themeBtn.addEventListener("click", toggleTheme);
 }
 
 // Inicjalizacja podglądu Firestore
