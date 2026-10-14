@@ -32,12 +32,12 @@ html {
 html.dark-theme {
   --surface: #252525;
   --surface-2: #353535;
-  --border: #3f3f46;
+  --border: #454545;
   --muted: #a1a1aa;
   --accent: #4ade80;
   --accent-2: #14532d;
-  --danger: #f87171;
-  --danger-bg: #451a03;
+  --danger: #80301d;
+  --danger-bg: #291712;
   --shadow: 0 8px 28px rgba(0, 0, 0, .4);
   color: #e4e4e7;
   background-image: url('./images/Mountain_Terrain_dark.png');
@@ -54,12 +54,12 @@ html.dark-theme .button {
 }
 
 html.dark-theme .danger-zone {
-  border-color: #80301d; /* Ciemniejsza, stonowana czerwona ramka */
-  background: #291712;  /* Ciemne, wpadające w czerwień tło pasujące do trybu ciemnego */
+  border-color: var(--danger); /* Ciemniejsza, stonowana czerwona ramka */
+  background: var(--danger-bg);  /* Ciemne, wpadające w czerwień tło pasujące do trybu ciemnego */
 }
 
 html.dark-theme .player-number {
-  background: #3f3f46;
+  background: #454545;
 }
 
 html.dark-theme .permission {
@@ -197,6 +197,9 @@ h3 {
   font-size: 11px;
   font-weight: 800;
   letter-spacing: .06em;
+  background: var(--surface-2);
+  min-width: 86px;
+  justify-content: center;
 }
 
 .status-setup {
