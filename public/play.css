@@ -185,7 +185,7 @@ h3 {
 }
 
 .badge, .status-pill, .ready-badge {
-  display: inline-;
+  display: inline-flex;
   align-items: center;
   width: max-content;
   padding: 4px 9px;
@@ -196,11 +196,6 @@ h3 {
   background: var(--surface-2);
   min-width: 86px;
   justify-content: center;
-}
-
-.badge {
-  background: #eeeae2;
-  color: #66625b;
 }
 
 .ready-yes {
@@ -438,12 +433,13 @@ h3 {
 
 .button {
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 50px;
   background: #fff;
   padding: 8px 8px;
   font-weight: 800;
   color: #292923;
   transition: .15s ease;
+  min-width: 40px;
 }
 
 .button:hover:not(:disabled) {
