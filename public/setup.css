@@ -223,10 +223,11 @@ h3 {
   border: 1px solid var(--border);
   border-radius: 50px;
   background: #fff;
-  padding: 9px 13px;
+  padding: 8px 8px;
   font-weight: 750;
   color: #292923;
   transition: .15s ease;
+  min-width: 40px;
 }
 
 .button:hover:not(:disabled) {
@@ -621,6 +622,13 @@ transform: scale(2);
     width: 100%;
   }
   .hero-actions .button {
+    flex: 1 1 180px;
+  }
+
+ .danger-actions {
+    width: 100%;
+  }
+ .danger-actions .button {
     flex: 1 1 180px;
   }
  .stats-table th, .stats-table td {
