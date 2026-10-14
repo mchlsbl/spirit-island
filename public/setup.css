@@ -28,8 +28,6 @@ html {
   background-size: 50%;
 }
 
-
-
 /* Zmienne dla trybu ciemnego aktywowane klasą .dark-theme na poziomie <html> */
 html.dark-theme {
   --surface: #1e1e24;
@@ -42,14 +40,7 @@ html.dark-theme {
   --danger-bg: #451a03;
   --shadow: 0 8px 28px rgba(0, 0, 0, .4);
   color: #e4e4e7;
-/*  background: #121212; */
-}
-
-
-/* Dostosowanie elementów topbara i tła w trybie ciemnym */
-html.dark-theme body {
-  background-color: #121212;
-  /* Jeśli chcesz, możesz też podmienić grafikę terenu na ciemniejszą wersję lub zostawić */
+  background-image: url('./images/Mountain_Terrain_dark.png');
 }
 
 html.dark-theme .topbar {
