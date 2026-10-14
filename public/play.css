@@ -58,10 +58,6 @@ html.dark-theme .danger-zone {
   background: #291712;  /* Ciemne, wpadające w czerwień tło pasujące do trybu ciemnego */
 }
 
-html.dark-theme .player-number {
-  background: #3f3f46;
-}
-
 html.dark-theme .permission {
   color: #aaaaaa;
 }
@@ -72,6 +68,10 @@ html.dark-theme .field {
 
 html.dark-theme .info-box {
   color: #aaaaaa;
+}
+
+html.dark-theme .main-title {
+  color: #e4e4e4;
 }
 
 
@@ -350,7 +350,7 @@ h3 {
 
 .main-column {
   display: grid;
-  /*gap: 16px;*/
+  gap: 16px;
   align-content: start;
 }
 
