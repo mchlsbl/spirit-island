@@ -30,8 +30,8 @@ html {
 
 /* Zmienne dla trybu ciemnego aktywowane klasą .dark-theme na poziomie <html> */
 html.dark-theme {
-  --surface: #1e1e24;
-  --surface-2: #27272a;
+  --surface: #252525;
+  --surface-2: #353535;
   --border: #3f3f46;
   --muted: #a1a1aa;
   --accent: #4ade80;
@@ -44,7 +44,7 @@ html.dark-theme {
 }
 
 html.dark-theme .topbar {
-  background: rgba(30, 30, 36, .9);
+  background: rgba(35, 35, 35, .5);
 }
 
 html.dark-theme select,
@@ -54,16 +54,25 @@ html.dark-theme .button {
 }
 
 html.dark-theme .danger-zone {
-  border-color: #7f1d1d; /* Ciemniejsza, stonowana czerwona ramka */
-  background: #2a1215;  /* Ciemne, wpadające w czerwień tło pasujące do trybu ciemnego */
+  border-color: #80301d; /* Ciemniejsza, stonowana czerwona ramka */
+  background: #291712;  /* Ciemne, wpadające w czerwień tło pasujące do trybu ciemnego */
 }
 
 html.dark-theme .player-number {
   background: #3f3f46;
 }
 
+html.dark-theme .permission {
+  color: #aaaaaa;
+}
 
+html.dark-theme .field {
+  color: #aaaaaa;
+}
 
+html.dark-theme .info-box {
+  color: #aaaaaa;
+}
 
 
 body {
@@ -198,7 +207,7 @@ h3 {
 
 .button {
   border: 1px solid var(--border);
-  border-radius: 9px;
+  border-radius: 50px;
   background: #fff;
   padding: 9px 13px;
   font-weight: 750;
@@ -277,7 +286,7 @@ h3 {
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 30px;
   box-shadow: var(--shadow);
   padding: 18px;
 }
@@ -336,7 +345,7 @@ select {
   gap: 10px;
   padding: 10px;
   border: 1px solid var(--border);
-  border-radius: 11px;
+  border-radius: 15px;
   background: var(--surface-2);
 }
 
@@ -375,6 +384,7 @@ transform: scale(2);
 .switch-row {
   display: flex;
   justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 20px;
   padding: 4px 0;
