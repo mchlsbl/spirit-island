@@ -114,6 +114,7 @@ button {
 .topbar-actions {
   display: flex;
   align-items: center;
+  justify-content: right;
   gap: 8px;
 }
 
