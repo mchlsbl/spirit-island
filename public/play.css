@@ -39,6 +39,7 @@ html.dark-theme {
   --danger: #f87171;
   --danger-bg: #451a03;
   --shadow: 0 8px 28px rgba(0, 0, 0, .4);
+  --primary: EFEFF2;
   color: #e4e4e7;
   background-image: url('./images/Jungle_Terrain_dark.png');
 }
@@ -63,7 +64,7 @@ html.dark-theme .player-button {
 }
 
 html.dark-theme .player-number {
-  background: #3f3f46;
+  background: #e4e4e7;
 }
 
 html.dark-theme .permission {
@@ -82,6 +83,16 @@ html.dark-theme .main-title {
   color: #e4e4e4;
 }
 
+html.dark-theme .fear-button {
+  color: #e4e4e7;
+}
+
+html.dark-theme .element.style {
+  color: #e4e4e7;
+}
+
+
+  
 
 body {
   margin: 0;
