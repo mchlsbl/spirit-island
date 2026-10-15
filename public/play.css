@@ -59,9 +59,6 @@ html.dark-theme .danger-zone {
   background: #291712;  /* Ciemne, wpadające w czerwień tło pasujące do trybu ciemnego */
 }
 
-html.dark-theme .player-button {
-  background: #454545;
-}
 html.dark-theme .phase-step .num {
   background: #454545;
 }
@@ -90,7 +87,7 @@ html.dark-theme .spirit-button {
   color: #e4e4e4;
 }
 
-html.dark-theme .player-button:hover {
+html.dark-theme .spirit-button:hover {
   border-color: var(--muted);
   background: var(--border);
 }
