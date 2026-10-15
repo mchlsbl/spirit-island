@@ -481,12 +481,13 @@ h3 {
   background: var(--surface-2);
 }
 
-.button-ghost {
+/*.button-ghost {
   background: transparent;
-}
+}*/
 
 .button-large {
   min-width: 150px;
+  width: 100%;
 }
 
 .card-header {
