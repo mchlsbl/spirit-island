@@ -144,6 +144,8 @@ h1, h2, h3, p {
 h1 {
   margin-bottom: 0;
   font-size: 22px;
+  font-weight: 900;
+  letter-spacing: .08em;
 }
 
 h2 {
