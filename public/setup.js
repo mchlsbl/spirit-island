@@ -183,7 +183,7 @@ const I18N = {
     "setup.players.description": "Player count, spirits and permissions.",
     "setup.players.count": "Player count",
     "setup.players.spirit": "Spirit",
-    "setup.players.noSpirit": "— select spirit —",
+    "setup.players.noSpirit": "—!— select spirit —!—",
     "setup.players.fear": "Fear",
     "setup.players.phase": "Phase",
     
