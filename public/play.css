@@ -91,6 +91,11 @@ html.dark-theme .spirit-button:hover {
   border-color: var(--muted);
   background: var(--border);
 }
+
+html.dark-theme .player-button:hover {
+  border-color: var(--muted);
+  background: var(--border);
+}
   
 
 body {
@@ -184,7 +189,7 @@ h3 {
   gap: 8px;
 }
 
-.badge, .status-pill, .ready-badge {
+.badge, .status-pill {
   display: inline-flex;
   align-items: center;
   width: max-content;
@@ -195,6 +200,20 @@ h3 {
   letter-spacing: .06em;
   background: var(--surface-2);
   min-width: 86px;
+  justify-content: center;
+}
+
+.ready-badge {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  background: var(--surface-2);
+  min-width: 100px;
   justify-content: center;
 }
 
@@ -563,6 +582,7 @@ h3 {
   border-radius: 6px;
   font-weight: 900;
   font-size: 16px;
+  border-style: none;
 }
 
 .element-display {
