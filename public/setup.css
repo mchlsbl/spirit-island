@@ -264,9 +264,9 @@ h3 {
   background: var(--danger-bg);
 }
 
-.button-ghost {
+/*.button-ghost {
   background: transparent;
-}
+}*/
 
 .alert {
   padding: 12px 14px;
