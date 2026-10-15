@@ -9,8 +9,8 @@
   --muted: #706e67;
   --accent: #257338;
   --accent2: #C0EBC8;
-  --danger: #80301d;
-  --danger-bg: #291712;
+  --danger: #291712;
+  --danger-bg: #80301d;
   --shadow: 0 8px 28px rgba(43, 39, 31, .07);
 }
 * { box-sizing: border-box; }
@@ -562,8 +562,7 @@ h3 {
 .element-compact button {
   width: 32px;
   height: 32px;
-  border: 1px solid var(--border);
-  background: #fff;
+  background: var(--border);
   border-radius: 6px;
   font-weight: 900;
   font-size: 16px;
