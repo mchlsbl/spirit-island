@@ -258,11 +258,11 @@ const ELEMENT_ICONS = {
 };
 
 const PHASE_STEPS = {
-  spirit: { pl: ["Rozwój", "Zebranie energii", "Zagranie i opłacenie kart Mocy"], en: ["Growth", "Gain Energy", "Play and Pay for Power Cards"] },
+  spirit: { pl: ["Rozwój", "Zebranie energii", "Zagranie i opłacenie kart Mocy"], en: ["Growth", "Gain Energy", "Play and pay for Power Cards"] },
   fast: { pl: ["Pośpieszne Moce z kart", "Pośpieszne Moce Wrodzone"], en: ["Fast Power Cards", "Fast Innate Powers"] },
-  invader: { pl: ["Zarażona Wyspa", "Strach", "Dewastacja", "Budowa", "Eksploracja", "Awans kart Najeźdźców"], en: ["Blighted Island Effect", "Fear Effects", "Invader Actions: Ravage, Build, Explore", "Advance Invader Cards"] },
+  invader: { pl: ["Zarażona Wyspa", "Strach", "Dewastacja", "Budowa", "Eksploracja", "Awans kart Najeźdźców"], en: ["Blighted Island Effect", "Fear Effects", "Ravage", "Build", "Explore", "Advance Invader Cards"] },
   slow: { pl: ["Powolne Moce z kart", "Powolne Moce Wrodzone"], en: ["Slow Power Cards", "Slow Innate Powers"] },
-  time_passes: { pl: ["Odrzuć zagrane karty Mocy", "Odnów zużyte karty", "Przesuń się do następnej tury"], en: ["Discard played Power Cards", "Recover spent cards", "Move to the next turn"] }
+  time_passes: { pl: ["Odrzucenie zagranych kart Mocy", "Wyleczenie Dahan i Najeźdźców"], en: ["Discard played Power Cards", "Heal Dahans and Invaders"] }
 };
 
 const ADVERSARIES = [
